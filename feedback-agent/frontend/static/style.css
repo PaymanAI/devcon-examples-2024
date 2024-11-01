@@ -1,0 +1,297 @@
+body {
+  background-color: #f5f5f5;
+  font-family: 'DM Sans', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-image: url("/public/feedback-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31.25px;
+  text-align: center;
+}
+
+textarea {
+  min-height: 140px;
+}
+
+.spacer {
+  margin-bottom: 40px;
+}
+
+
+.container {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 50px 80px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .logo, .container-wide .logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.narrow {
+  width: 560px;
+  max-width: 560px;
+}
+
+.wide {
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
+  right: 50px;
+  left: 50px;
+  overflow: hidden;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  margin: 0px auto 40px auto;
+  gap: 20px;
+}
+
+.metrics .card {
+  padding: 10px;
+  text-align: center;
+  padding: 20px 30px 20px 30px;
+  border-radius: 32px;
+  border: 4px solid rgba(239, 111, 28, 1);
+  background: rgba(255, 242, 220, 1);
+}
+
+.metrics .card h2 {
+  color: #ef6f1c;
+  margin-bottom: 20px;
+}
+
+.metrics .card div {
+  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.distributions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.distributions h2 {
+  margin-bottom: -10px;
+}
+
+.bar-bg {
+  background: rgb(215,20,20);
+  background: linear-gradient(90deg, rgba(215,20,20,1) 0%, rgba(84,200,39,1) 100%, rgba(0,212,255,1) 100%);
+  height: 20px;
+  border-radius: 8px;
+}
+
+.bar-fg {
+  height: 26px;
+  display: inline-block;    
+  margin-top: -3px;
+  border-right: 4px solid #454545;
+}
+
+.distributions .titles {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 0 10px 2px 10px;
+}
+
+.analysis {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 50px;
+  margin: 0 60px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.analysis strong {
+  font-size: 18px;
+  line-height: 2;
+}
+
+.analysis .card {
+  align-self: center;
+}
+
+.analysis p {
+  margin: 0.5rem 0;
+}
+
+.analysis h2 {
+  color: #ef6f1c;
+  margin: 0;
+}
+
+.analysis .card ul li {
+  line-height: 1.4;
+}
+
+.feedback {
+  margin-bottom: 20px;
+  color: red;
+}
+
+.intro {
+  margin-bottom: 1rem
+}
+
+.instructions {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+input,
+textarea {
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #ef6f1c;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff7d61;
+}
+
+#result {
+  margin-top: 40px;
+}
+
+#result h2 {
+  color: #ef6f1c;
+  margin-bottom: 20px;
+}
+
+#result pre {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.htmx-indicator {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+  opacity: 1;
+}
+
+.htmx-request.htmx-indicator {
+  opacity: 1;
+}
+
+.htmx-request .submit-button {
+  opacity: 0.5;
+}
+
+.powered {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px 30px;
+  border-radius: 99px;
+  gap: 20px;
+}
+
+p.center {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  label,
+  input,
+  button {
+    font-size: 1em;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  button {
+    padding: 10px;
+  }
+
+  #result pre {
+    padding: 15px;
+  }
+}

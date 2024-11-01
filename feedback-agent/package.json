@@ -1,0 +1,33 @@
+{
+  "name": "feedback-agent",
+  "module": "src",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/main.ts",
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@biomejs/biome": "1.9.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@elysiajs/static": "^1.1.1",
+    "@kitajs/html": "^4.2.2",
+    "@kitajs/ts-html-plugin": "^4.1.0",
+    "@langchain/core": "^0.3.6",
+    "@langchain/langgraph": "^0.2.10",
+    "@langchain/ollama": "^0.1.0",
+    "@langchain/openai": "^0.3.11",
+    "@ts-stack/markdown": "^1.5.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/wordcloud": "^1.2.2",
+    "elysia": "^1.1.17",
+    "paymanai": "1.1.1",
+    "qrcode": "^1.5.4",
+    "uuid": "^10.0.0"
+  }
+}

@@ -1,0 +1,480 @@
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  background-image: url("/public/buzzed-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  position: fixed;
+  top: 0px;
+  bottom: 100px;
+  left: 0px;
+  right: 0px;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.chat-container {
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  background: url("/public/bg-blur.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.start-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.chat-messages {
+  z-index: 10;
+  height: 100%;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+.chat-history {
+  overflow: hidden;
+  padding: 20px 20px 0 20px;
+}
+
+.conversation {
+  scroll-behavior: smooth;
+  overflow: scroll;
+  height: calc(100% - 170px);
+}
+
+.user-message, .ai-message {
+  margin-bottom: 15px;
+}
+
+.speech-bubble p {
+  margin: 0;
+  padding: 0;
+}
+
+.user-message {
+  align-self: flex-end;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-left: 75px;
+}
+
+.user-message .avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.user-message .speech-bubble {
+  padding: 12px 24px 12 24px;
+  border-radius: 40px 40px 0px 40px;
+  background-color: white;
+}
+
+.typing-source {
+  display: none;
+}
+
+.ai-message {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-items: flex-start;
+  margin-right: 75px;
+}
+
+.ai-message .avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.ai-message .speech-bubble {
+  background: rgba(212, 244, 255, 1);
+  padding: 12px 24px 12 24px;
+  border-radius: 54px 54px 54px 0px;
+}
+
+.chat-input {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  border-radius: 40px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  right: 40px;
+  left: 40px;  
+}
+
+.chat-input button {
+  background: none;
+  padding: 0
+}
+
+.chat-input button:hover {
+  background: none;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 0;
+  margin-right: 10px;
+  background: none;
+  color: white;
+  font-size: 16px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#send-btn .hide-on-request {
+  color: #68F0FF;
+}
+
+#send-btn:disabled .hide-on-request {
+  color: #ccc;
+  cursor: default;
+}
+
+#user-input:focus, #user-input:active {
+  outline: none;
+  border: none;
+}
+#user-input:disabled::placeholder {
+  opacity: 0.8;
+  color: #ccc;
+}
+
+#user-input:disabled::-ms-input-placeholder {
+  opacity: 0.8;
+  color: #ccc;
+}
+
+#user-input::placeholder {
+  opacity: 0.8;
+  color: white;
+}
+
+#user-input::-ms-input-placeholder {
+  opacity: 0.8;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #68F0FF;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: rgba(212, 244, 255, 1);
+}
+
+#microphone-btn {
+  background-color: #2196F3;
+}
+
+#microphone-btn:hover {
+  background-color: #1E88E5;
+}
+
+.budget-info {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 1);
+  border-radius: 20px 20px 0 0;
+}
+
+.budget-info span {
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 26.04px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 1);
+}
+
+.drink-card {
+  width: 300px;
+  border-radius: 0px 27px 27px 27px;
+  background: rgba(0, 0, 0, 1);
+  margin-bottom: 15px;
+  position: relative;
+  padding: 40px;
+}
+
+.drink-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.3;
+  width: 120px;
+  height: 120px;
+}
+
+.drink-title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 31.25px;  
+  color: white;
+}
+
+.drink-description {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+  max-width: 200px;
+  margin-bottom: 15px;
+  color: rgba(154, 154, 154, 1);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+.drink-order-number {
+  text-align: center;
+  color: rgba(211, 175, 51, 1);
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 80px;
+  font-weight: 800;
+}
+
+.drink-order-number-description {
+  text-align: center;
+  color: rgba(154, 154, 154, 1);
+}
+
+.ingredient-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.ingredient-item {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.offset {
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31.25px;
+  text-align: center;
+  color: white;
+}
+
+.cointainer.scroll {
+  overflow: scroll;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+    overflow: scroll;
+    height: 100%;
+}
+.order-item {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.order-item form {
+  margin: 0;
+}
+.order-title {
+    font-size: 16px;
+}
+.order-instructions {
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+.confirm-btn {
+    background-color: #ef6f1c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 180px;
+}
+.confirm-btn:hover {
+    background-color: #ff7f2a;
+}
+
+.no-orders {
+    text-align: center;
+    font-size: 18px;
+    color: #ccc;
+    margin-top: 50px;
+}
+
+.htmx-indicator {
+  display: none;
+  transition: display 500ms ease-in;
+  margin: 0 auto;
+}
+
+.htmx-request .htmx-indicator, .htmx-request.htmx-indicator {
+  display: block;
+}
+
+.htmx-request .hide-on-request {
+  display: none;
+}
+
+.htmx-request button {
+  opacity: 0.5;
+}
+
+.powered {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 30px;
+  border-radius: 99px;
+  color: white
+}
+
+.tip {
+  background: rgba(212, 244, 255, 1);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.tip .loading {
+  width: 80px;
+  height: 80px;
+  align-self: center;
+}
+
+.tip .message {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tip button, .tip a {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
+.tip a {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.tip-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tip-status {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+
+.tip-status .logo {
+  display: flex;
+  align-items: center;
+}
+
+.tip-status .icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.tip-status .status-message {
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.qrcode {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0
+}
+
+.tip-link .link {
+  display: flex;
+  justify-content: center;
+}
+
+.qrcode svg {
+  width: 150px;
+  height: 150px;
+}

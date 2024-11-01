@@ -1,0 +1,67 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Feedback Agent Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
+  <link rel="stylesheet" href="/public/style.css">
+  <script src="https://unpkg.com/wordcloud@latest/dist/wordcloud.min.js"></script>
+  <script src="/public/wordcloud2.js"></script>
+  <script src="/public/wordcloud.js"></script>
+</head>
+
+<body>
+  <div class="container wide">
+    <div class="centered">
+      <h1>DevCon 2024 Feedback Analysis</h1>
+    </div>
+    <div class="metrics">
+      <div id="count" hx-get="/analysis/count" hx-target="#count" hx-swap="innerHTML" hx-trigger="load">
+      </div>
+      <div id="spend" hx-get="/analysis/spend" hx-target="#spend" hx-swap="innerHTML" hx-trigger="load">
+      </div>
+      <div id="remaining" hx-get="/analysis/remaining" hx-target="#remaining" hx-swap="innerHTML" hx-trigger="load">
+      </div>
+      <div id="average-spend" hx-get="/analysis/average-spend" hx-target="#average-spend" hx-swap="innerHTML"
+        hx-trigger="load">
+      </div>
+    </div>
+    <div class="distributions">
+      <div id="quality" hx-get="/analysis/quality" hx-target="#quality" hx-swap="innerHTML" hx-trigger="load">
+      </div>
+      <div id="sentiment" hx-get="/analysis/sentiment" hx-target="#sentiment" hx-swap="innerHTML" hx-trigger="load">
+      </div>
+    </div>
+    <div class="analysis">
+      <div id="wordcloud" hx-get="/analysis/wordcloud" hx-target="#wordcloud" hx-swap="innerHTML" hx-trigger="load"
+        class="wordcloud">
+      </div>
+      <div class="card">
+        <div id="feedback" hx-get="/analysis/feedback" hx-target="#feedback" hx-swap="innerHTML" hx-trigger="load">
+        </div>
+      </div>
+    </div>
+    <!-- <div style="width: 60%; margin: 30px auto; display: flex; justify-items: center; align-items: center; gap: 30px;">
+      <img src="/qrcode" alt="QR Code" style="width: 200px" />
+      <p style="font-size: 30px"><span style="font-weight: bold">Want to participate?</span><br>Scan the QR code or use
+        the iPad to leave feedback and get paid
+        by
+        AI!</p>
+    </div> -->
+  </div>
+  <div class="powered">
+    <div style="font-weight: bold; margin-right: 10px">Powered by</div>
+    <img src="/public/logo-transparent.png" alt="Payman Logo" style="width: 150px;">
+    <img src="/public/coinbase-logo.svg" alt="Coinbase Logo" style="width: 150px; margin-bottom:7px">
+  </div>
+</body>
+
+</html>
