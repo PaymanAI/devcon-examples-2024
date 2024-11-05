@@ -1,0 +1,26 @@
+{
+    "name": "drillbit-server",
+    "module": "src",
+    "type": "module",
+    "scripts": {
+        "dev": "bun --watch src/main.ts",
+        "lint": "biome check .",
+        "lint:fix": "biome check --fix ."
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@biomejs/biome": "1.9.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@elysiajs/cors": "^1.1.1",
+        "@langchain/core": "^0.3.6",
+        "@langchain/langgraph": "^0.2.11",
+        "@langchain/openai": "^0.3.5",
+        "elysia": "^1.1.19",
+        "paymanai": "1.2.1",
+        "uuid": "^10.0.0"
+    }
+}

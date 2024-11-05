@@ -1,0 +1,4 @@
+drillbit-chat-agent/.idea
+drillbit-chat-agent/server/.env
+drillbit-chat-agent/.env
+/drillbit-chat-agent/server/node_modules
