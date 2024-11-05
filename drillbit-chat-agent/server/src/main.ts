@@ -1,3 +1,3 @@
-import { server } from './server'
+import { server } from "./server";
 
-server.listen(8080, () => {})
+server.listen(Bun.env.PORT ?? 8080, () => {});
