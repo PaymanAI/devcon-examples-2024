@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Activation Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+
+<body>
+  <div class="container narrow">
+    <div class="logo">
+      <img src="/public/logo-transparent.png" alt="Payman Logo" style="width: 150px; margin-top: 5px">
+    </div>
+    <div id="result" hx-get="/start" hx-target="#result" hx-swap="innerHTML" hx-trigger="load">
+    </div>
+  </div>
+  <div class="powered">
+    <div style="font-weight: 500; font-size: 12px; margin-right: 10px">Powered by</div>
+    <a href="https://www.paymanai.com" target="_blank">
+      <img src="/public/payman_black.svg" alt="Payman Logo" style="width: 70px; margin-top: 5px; margin-right: 10px">
+    </a>
+    <a href="https://www.coinbase.com" target="_blank">
+      <img src="/public/coinbase-logo.svg" alt="Coinbase Logo" style="width: 70px; margin-top: 3px">
+    </a>
+  </div>
+</body>
+
+</html>
