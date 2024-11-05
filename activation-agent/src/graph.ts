@@ -12,7 +12,7 @@ import {
   toolVerifyRequestSubmission,
   toolRequestSubmissionComplete
 } from './tools'
-import { SqliteSaver } from "./chechpoint_sqlite"
+import { SqliteSaver } from "./checkpoint_sqlite"
 import { Database } from 'bun:sqlite'
 
 const workflow = new StateGraph(GraphState)

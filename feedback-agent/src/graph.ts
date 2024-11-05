@@ -1,8 +1,11 @@
 import { END, MemorySaver, START, StateGraph } from '@langchain/langgraph'
 import { inputEvaluator, paymentSender } from './agents'
 import GraphState from './state'
+import { SqliteSaver } from "./checkpoint_sqlite"
+import { Database } from 'bun:sqlite'
 
-const checkpointer = new MemorySaver()
+const checkpointer_db = new Database('checkpointer.sqlite')
+const checkpointer = new SqliteSaver(checkpointer_db);
 
 function hasEnoughFeedback(state: typeof GraphState.State) {
   if (state.feedback) {

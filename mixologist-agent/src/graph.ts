@@ -9,6 +9,8 @@ import { ChatOpenAI } from '@langchain/openai'
 import { drinks } from './drinks'
 import GraphState from './state'
 import { generateTools } from './tools'
+import { SqliteSaver } from "./checkpoint_sqlite"
+import { Database } from 'bun:sqlite'
 
 export const model = new ChatOpenAI({
   model: 'gpt-4o',
@@ -75,8 +77,9 @@ const workflow = new StateGraph(GraphState)
   .addConditionalEdges('tools', checkToolResponse)
   .addEdge('goodbye', END)
 
-const checkpointer = new MemorySaver()
-
+const checkpointer_db = new Database('checkpointer.sqlite')
+const checkpointer = new SqliteSaver(checkpointer_db);
+  
 export const app = workflow.compile({
   checkpointer,
   interruptBefore: ['user_input'],
