@@ -1,0 +1,301 @@
+body {
+  background-color: #f5f5f5;
+  font-family: 'DM Sans', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-image: url("/public/activation-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31.25px;
+  text-align: center;
+}
+
+.twitter-preview {
+  min-height: 140px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 30px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.35);
+  background: #fafafa;
+  padding: 15px;
+}
+
+.spacer {
+  margin-bottom: 40px;
+}
+
+
+.container {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 50px 80px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .logo, .container-wide .logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.narrow {
+  width: 560px;
+  max-width: 560px;
+}
+
+.wide {
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
+  right: 50px;
+  left: 50px;
+  overflow: hidden;
+}
+
+.metrics {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto 40px auto;
+  padding: 40px 60px 40px 60px;
+  border-radius: 32px;
+  border: 4px solid rgba(239, 111, 28, 1);
+  background: rgba(255, 242, 220, 1);
+}
+
+.metrics .card {
+  padding: 20px;
+  text-align: center;
+}
+
+.metrics .card h2 {
+  color: #ef6f1c;
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+.metrics .card div {
+  margin-bottom: 10px;
+  font-size: 44px;
+  font-weight: bold;
+}
+
+.analysis {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.analysis h2 {
+  color: #ef6f1c;
+  margin: 0;
+}
+
+.analysis .card {
+  flex: 3;
+}
+
+.analysis .card ul li {
+  margin-top: 20px;
+}
+
+.analysis .wordcloud {
+  flex: 1;
+}
+
+.feedback {
+  margin-bottom: 20px;
+  color: red;
+}
+
+.intro {
+  margin-bottom: 1rem
+}
+
+.instructions {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  text-align: left;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+input,
+textarea {
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #ef6f1c;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff7d61;
+}
+
+#result {
+  margin-top: 40px;
+}
+
+#result h2 {
+  color: #ef6f1c;
+  margin-bottom: 20px;
+}
+
+#result pre {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.htmx-indicator {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+  opacity: 1;
+}
+
+.htmx-request.htmx-indicator {
+  opacity: 1;
+}
+
+.htmx-request .submit-button {
+  opacity: 0.5;
+}
+
+.powered {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px 30px;
+  border-radius: 99px;
+}
+
+p.center {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.tooltip {
+  visibility: hidden;
+  padding: 5px 20px;
+  background-color: rgb(33 179 33);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  bottom: 10px;
+}
+
+.htmx-request .hide-on-request {
+  display: none;
+}
+
+.htmx-indicator {
+  display: none;
+  transition: display 500ms ease-in;
+  margin: 0 auto;
+}
+
+.htmx-request .htmx-indicator, .htmx-request.htmx-indicator {
+  display: block;
+}
+
+.htmx-request .hide-on-request {
+  display: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  label,
+  input,
+  button {
+    font-size: 1em;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  button {
+    padding: 10px;
+  }
+
+  #result pre {
+    padding: 15px;
+  }
+}
