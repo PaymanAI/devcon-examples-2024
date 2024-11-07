@@ -7,8 +7,8 @@ import {
   renderPickedTweetMessage,
   renderThankYouMessage,
 } from './renderers'
-import { completeRequest, getRequest } from './storage'
-import { fetchTweetsByHandle, findTweetsByIds } from './twitter'
+import { getRequest } from './storage'
+import { v4 as uuidv4 } from 'uuid'
 
 export const server = new Elysia()
   .use(
@@ -20,7 +20,7 @@ export const server = new Elysia()
     return renderCollectDetails()
   })
   .post('/start', async (req: any) => {
-    const thread_id = req.body.twitter
+    const thread_id = uuidv4()
     const email = req.body.email
     const handle = req.body.twitter
 
