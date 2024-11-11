@@ -28,7 +28,7 @@ export const MessageInput = ({
   return (
     <>
       <form
-        className="flex absolute bottom-0 rounded-[40px] h-[50px] bg-white/30 px-5 py-2.5 right-10 left-10"
+        class="flex absolute bottom-0 rounded-[40px] h-[50px] bg-white/30 px-5 py-2.5 right-10 left-10"
         hx-post={postEndpoint}
         hx-get={getEndpoint}
         hx-target="#result"
@@ -42,7 +42,7 @@ export const MessageInput = ({
           name="message"
           disabled={!postEndpoint}
           placeholder="Type your message"
-          className="flex-grow px-2.5 py-2.5 border-0 mr-2.5 bg-transparent text-white text-base h-[30px] mt-2.5 
+          class="flex-grow px-2.5 py-2.5 border-0 mr-2.5 bg-transparent text-white text-base h-[30px] 
         placeholder:opacity-80 placeholder:text-white
         focus:outline-none focus:border-0
         disabled:placeholder:opacity-80 disabled:placeholder:text-[#ccc]"
@@ -52,7 +52,7 @@ export const MessageInput = ({
           type="submit"
           disabled={!postEndpoint}
           hx-indicator="#spinner"
-          className="bg-transparent p-0 hover:bg-transparent disabled:opacity-80 disabled:cursor-default 
+          class="bg-transparent p-0 hover:bg-transparent disabled:opacity-80 disabled:cursor-default 
         [&_.hide-on-request]:text-[#68F0FF] 
         disabled:[&_.hide-on-request]:text-[#ccc]
         disabled:[&_.hide-on-request]:cursor-default"

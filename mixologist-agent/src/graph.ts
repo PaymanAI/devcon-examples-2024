@@ -79,7 +79,7 @@ const workflow = new StateGraph(GraphState)
 
 const checkpointer_db = new Database('checkpointer.sqlite')
 const checkpointer = new SqliteSaver(checkpointer_db);
-  
+
 export const app = workflow.compile({
   checkpointer,
   interruptBefore: ['user_input'],

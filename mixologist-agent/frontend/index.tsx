@@ -22,8 +22,8 @@ export const index = () => {
       </head>
 
       <body class="font-['DM_Sans'] m-0 p-0 flex justify-center items-center h-screen bg-[#f0f0f0] bg-[url('/public/buzzed-bg.jpg')] bg-no-repeat bg-cover">
-        <div class="fixed inset-0 bottom-[100px] overflow-scroll flex justify-center items-center flex-col">
-          <div class="flex justify-center m-5">
+        <div class="fixed inset-0 bottom-[70px] overflow-scroll flex justify-center items-center flex-col">
+          <div class="flex justify-center">
             <img src="/public/buzzed-logo.png" alt="Buzz Lightbeer" />
           </div>
 
@@ -51,7 +51,7 @@ export const index = () => {
               </span>
             </div>
 
-            <div id="result" class="z-10 h-full pb-[100px] overflow-hidden">
+            <div id="result" class="z-10 overflow-hidden">
               <form
                 hx-post="/start"
                 hx-target="#result"

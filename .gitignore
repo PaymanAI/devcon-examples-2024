@@ -3,3 +3,6 @@ drillbit-chat-agent/server/.env
 drillbit-chat-agent/.env
 /drillbit-chat-agent/server/node_modules
 mixologist-agent/bun.lockb
+mixologist-agent/package-lock.json
+mixologist-agent/checkpointer.sqlite-wal
+mixologist-agent/checkpointer.sqlite-shm

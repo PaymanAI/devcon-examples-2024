@@ -47,15 +47,13 @@ export const ChatHistory = ({
               class="self-start flex flex-row gap-2.5 justify-start mr-[75px] mb-4"
               id={isLast(index) ? "last-chat-item" : ""}
             >
-              <span class="flex">
-                <img
-                  src="/public/buzzed-logo.png"
-                  alt="Buzzed Lightbeer"
-                  class="w-20 h-20 rounded-full bg-white"
-                />
-              </span>
+              <img
+                src="/public/buzzed-logo.png"
+                alt="Buzzed Lightbeer"
+                class="w-10 h-10 rounded-full bg-white"
+              />
               {index < filteredMessages.length - 1 ? (
-                <span class="p-3 px-6 rounded-[54px_54px_54px_0px] bg-[rgb(212,244,255)]">
+                <span class="p-3 px-6 rounded-[32px_32px_32px_0px] bg-[rgb(212,244,255)]">
                   {message.message}
                 </span>
               ) : (
@@ -64,7 +62,7 @@ export const ChatHistory = ({
                     {message.message}
                   </span>
                   <span
-                    class="p-3 px-6 rounded-[54px_54px_54px_0px] bg-[rgb(212,244,255)]"
+                    class="p-3 px-6 rounded-[32px_32px_32px_0px] bg-[rgb(212,244,255)]"
                     id="simulateWithTyping"
                   />
                   <script>simulateTyping();</script>
@@ -79,14 +77,12 @@ export const ChatHistory = ({
           return (
             <>
               <div class="self-start flex flex-row gap-2.5 justify-start mr-[75px] mb-4">
-                <span class="flex">
-                  <img
-                    src="/public/buzzed-logo.png"
-                    alt="Buzzed Lightbeer"
-                    class="w-20 h-20 rounded-full bg-white"
-                  />
-                </span>
-                <span class="p-3 px-6 rounded-[54px_54px_54px_0px] bg-[rgb(212,244,255)]">
+                <img
+                  src="/public/buzzed-logo.png"
+                  alt="Buzzed Lightbeer"
+                  class="w-20 h-20 rounded-full bg-white"
+                />
+                <span class="p-3 px-6 rounded-[32px_32px_32px_0px] bg-[rgb(212,244,255)]">
                   Coming right up!
                 </span>
               </div>
@@ -97,7 +93,7 @@ export const ChatHistory = ({
                 <img
                   src="/public/buzzed-logo.png"
                   alt="Buzzed light beer"
-                  class="absolute top-0 right-0 opacity-30 w-[120px] h-[120px]"
+                  class="absolute top-0 right-0 opacity-30 w-10 h-10"
                 />
                 <div class="text-2xl font-extrabold leading-[31.25px] text-white">
                   {drink.drink}
@@ -122,16 +118,14 @@ export const ChatHistory = ({
             class="self-end flex flex-row gap-2.5 justify-end ml-[75px] mb-4"
             id={isLast(index) ? "last-chat-item" : ""}
           >
-            <span class="p-3 px-6 rounded-[40px_40px_0px_40px] bg-white">
+            <span class="p-3 px-6 rounded-[32px_32px_0px_32px] bg-white">
               {`${message.message}`}
             </span>
-            <span class="flex">
-              <img
+            <img
                 src="/public/user-logo.jpg"
                 alt="User logo"
-                class="w-20 h-20 rounded-full bg-white"
+                class="w-10 h-10 rounded-full bg-white"
               />
-            </span>
           </div>
         );
       })}
