@@ -4,7 +4,7 @@ export const CollectDetails = () => (
       Get Paid by <span class="text-primary">AI</span>
     </h1>
 
-    <p class="mb-6 text-gray-700">
+    <p class="mb-6 text-gray-700 md:text-xl ">
       Enter your email and X handle, and we'll create a personalized tweet for
       you. Share it and get paid in USDC!
     </p>
@@ -17,7 +17,7 @@ export const CollectDetails = () => (
       class="flex flex-col gap-4"
     >
       <div class="flex flex-col">
-        <label for="email" class="text-base font-medium mb-2">
+        <label for="email" class="md:text-xl font-medium mb-2">
           Your Email:
         </label>
         <input
@@ -26,12 +26,12 @@ export const CollectDetails = () => (
           required
           type="email"
           placeholder="Enter your email address..."
-          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent md:text-xl"
         />
       </div>
 
       <div class="flex flex-col">
-        <label for="twitter" class="text-base font-medium mb-2">
+        <label for="twitter" class="md:text-xl font-medium mb-2">
           Handle on X:
         </label>
         <input
@@ -40,7 +40,7 @@ export const CollectDetails = () => (
           required
           type="text"
           placeholder="Enter your twitter handle..."
-          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent md:text-xl"
         />
       </div>
 
@@ -49,7 +49,7 @@ export const CollectDetails = () => (
         hx-indicator="#spinner"
         class="flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
-        <span class="hide-on-request">Submit</span>
+        <span class="hide-on-request md:text-xl">Submit</span>
         <svg
           id="spinner"
           class="htmx-indicator w-4 h-4"
