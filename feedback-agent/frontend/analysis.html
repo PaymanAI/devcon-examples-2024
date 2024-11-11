@@ -1,10 +1,17 @@
-<!-- index.html -->
-<!DOCTYPE html>
 <html lang="en">
+
+</html>
 
 <head>
   <meta charset="UTF-8" />
-  <title>Feedback Agent Analysis</title>
+  <title>Feedback Agent | Payman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png" />
+  <link rel="manifest" href="/public/site.webmanifest" />
+  <link rel="apple-touch-icon" href="logo192.png" />
+  <meta name="description" content="Get paid for providing feedback on Devcon 2024 to our AI Agent" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -12,55 +19,53 @@
     rel="stylesheet">
   <script src="https://unpkg.com/htmx.org@1.9.2"></script>
   <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
-  <link rel="stylesheet" href="/public/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/wordcloud@latest/dist/wordcloud.min.js"></script>
   <script src="/public/wordcloud2.js"></script>
   <script src="/public/wordcloud.js"></script>
 </head>
 
-<body>
-  <div class="container wide">
-    <div class="centered">
-      <h1>DevCon 2024 Feedback Analysis</h1>
+<body
+  class="min-h-screen bg-gray-100 font-['DM_Sans'] text-gray-800 m-0 p-0 bg-[url('/public/feedback-bg.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
+  <div class="mx-20 px-10 rounded-[20px] bg-[#ffffffdc] w-full">
+    <div class="flex flex-col items-center">
+      <h1 class="text-3xl font-bold text-slate-800 mb-8">DevCon 2024 Feedback Analysis</h1>
     </div>
-    <div class="metrics">
-      <div id="count" hx-get="/analysis/count" hx-target="#count" hx-swap="innerHTML" hx-trigger="load">
+
+    <!-- Metrics Grid -->
+    <div class="grid grid-cols-4 gap-5 mb-10">
+      <div id="count" hx-get="/analysis/count" hx-target="#count" hx-swap="innerHTML" hx-trigger="load"
+        class="p-8 text-center rounded-3xl border-4 border-[#040201] bg-[#fff2dc]">
       </div>
-      <div id="spend" hx-get="/analysis/spend" hx-target="#spend" hx-swap="innerHTML" hx-trigger="load">
+      <div id="spend" hx-get="/analysis/spend" hx-target="#spend" hx-swap="innerHTML" hx-trigger="load"
+        class="p-8 text-center rounded-3xl border-4 border-[#040201] bg-[#fff2dc]">
       </div>
-      <div id="remaining" hx-get="/analysis/remaining" hx-target="#remaining" hx-swap="innerHTML" hx-trigger="load">
+      <div id="remaining" hx-get="/analysis/remaining" hx-target="#remaining" hx-swap="innerHTML" hx-trigger="load"
+        class="p-8 text-center rounded-3xl border-4 border-[#040201] bg-[#fff2dc]">
       </div>
       <div id="average-spend" hx-get="/analysis/average-spend" hx-target="#average-spend" hx-swap="innerHTML"
-        hx-trigger="load">
+        hx-trigger="load" class="p-8 text-center rounded-3xl border-4 border-[#040201] bg-[#fff2dc]">
       </div>
     </div>
-    <div class="distributions">
+
+    <!-- Distributions Grid -->
+    <div class="grid grid-cols-2 gap-5">
       <div id="quality" hx-get="/analysis/quality" hx-target="#quality" hx-swap="innerHTML" hx-trigger="load">
       </div>
       <div id="sentiment" hx-get="/analysis/sentiment" hx-target="#sentiment" hx-swap="innerHTML" hx-trigger="load">
       </div>
     </div>
-    <div class="analysis">
+
+    <!-- Analysis Section -->
+    <div class="grid grid-cols-[1fr_3fr] gap-12 mx-16 mt-5 text-base">
       <div id="wordcloud" hx-get="/analysis/wordcloud" hx-target="#wordcloud" hx-swap="innerHTML" hx-trigger="load"
         class="wordcloud">
       </div>
-      <div class="card">
+      <div class="self-center">
         <div id="feedback" hx-get="/analysis/feedback" hx-target="#feedback" hx-swap="innerHTML" hx-trigger="load">
         </div>
       </div>
     </div>
-    <!-- <div style="width: 60%; margin: 30px auto; display: flex; justify-items: center; align-items: center; gap: 30px;">
-      <img src="/qrcode" alt="QR Code" style="width: 200px" />
-      <p style="font-size: 30px"><span style="font-weight: bold">Want to participate?</span><br>Scan the QR code or use
-        the iPad to leave feedback and get paid
-        by
-        AI!</p>
-    </div> -->
-  </div>
-  <div class="powered">
-    <div style="font-weight: bold; margin-right: 10px">Powered by</div>
-    <img src="/public/logo-transparent.png" alt="Payman Logo" style="width: 150px;">
-    <img src="/public/coinbase-logo.svg" alt="Coinbase Logo" style="width: 150px; margin-bottom:7px">
   </div>
 </body>
 
