@@ -1,67 +1,78 @@
 export const CollectDetails = () => (
-  <div>
-    <h1 style='margin-bottom: 10px'>
-      Get Paid by <span style='color: #EF6F1C'>AI</span>
+  <div class="w-full">
+    <h1 class="mb-2.5 text-2xl font-bold">
+      Get Paid by <span class="text-primary">AI</span>
     </h1>
-    <p style='margin-bottom: 25px'>
+
+    <p class="mb-6 text-gray-700">
       Enter your email and X handle, and we'll create a personalized tweet for
       you. Share it and get paid in USDC!
     </p>
+
     <form
-      hx-post='/start'
-      hx-target='#result'
-      hx-swap='innerHTML'
-      hx-ext='json-enc'
+      hx-post="/start"
+      hx-target="#result"
+      hx-swap="innerHTML"
+      hx-ext="json-enc"
+      class="flex flex-col gap-4"
     >
-      <label for='email' style='font-size: 16px'>
-        Your Email:
-      </label>
-      <input
-        id='email'
-        name='email'
-        required={true}
-        type='email'
-        class='spacer'
-        placeholder='Enter your email address...'
-      />
-      <label for='twitter' style='font-size: 16px'>
-        Handle on X:
-      </label>
-      <input
-        id='twitter'
-        name='twitter'
-        required={true}
-        type='twitter'
-        class='spacer'
-        placeholder='Enter your twitter handle...'
-      />
-      <button type='submit' hx-indicator='#spinner' class='submit-button'>
+      <div class="flex flex-col">
+        <label for="email" class="text-base font-medium mb-2">
+          Your Email:
+        </label>
+        <input
+          id="email"
+          name="email"
+          required
+          type="email"
+          placeholder="Enter your email address..."
+          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="twitter" class="text-base font-medium mb-2">
+          Handle on X:
+        </label>
+        <input
+          id="twitter"
+          name="twitter"
+          required
+          type="text"
+          placeholder="Enter your twitter handle..."
+          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
+      </div>
+
+      <button
+        type="submit"
+        hx-indicator="#spinner"
+        class="flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      >
+        <span class="hide-on-request">Submit</span>
         <svg
-          id='spinner'
-          class='htmx-indicator'
-          xmlns='http://www.w3.org/2000/svg'
-          width='1em'
-          height='1em'
-          viewBox='0 0 24 24'
+          id="spinner"
+          class="htmx-indicator w-4 h-4"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
         >
           <title>Loading</title>
           <path
-            fill='currentColor'
-            d='M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z'
-            opacity='0.25'
+            fill="#000000"
+            d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+            opacity="0.25"
           />
-          <circle cx='12' cy='2.5' r='1.5' fill='currentColor'>
+          <circle cx="12" cy="2.5" r="1.5" fill="#000000">
             <animateTransform
-              attributeName='transform'
-              dur='0.75s'
-              repeatCount='indefinite'
-              type='rotate'
-              values='0 12 12;360 12 12'
+              attributeName="transform"
+              dur="0.75s"
+              repeatCount="indefinite"
+              type="rotate"
+              values="0 12 12;360 12 12"
             />
           </circle>
         </svg>
-        <span class='hide-on-request'>Submit</span>
       </button>
     </form>
   </div>
-)
+);
