@@ -6,3 +6,4 @@ mixologist-agent/bun.lockb
 mixologist-agent/package-lock.json
 mixologist-agent/checkpointer.sqlite-wal
 mixologist-agent/checkpointer.sqlite-shm
+activation-agent/package-lock.json

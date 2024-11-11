@@ -44,9 +44,8 @@ export const PickedTweetMessage = ({
       ></script>
     </div>
 
-    <p class="mt-8 mb-6 text-gray-700 md:text-xl">
-      Now please share this post on your X account and then submit the url of
-      your post below.
+    <p class="mt-8 mb-6 text-gray-700 md:text-2xl">
+      Click on the Post button above to share on your X account and then submit the url of your post below.
     </p>
 
     <form
