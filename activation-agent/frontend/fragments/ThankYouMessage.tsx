@@ -9,5 +9,6 @@ export const ThankYouMessage = ({ email }: ThankYouMessageProps) => (
       For details regarding your payment, please check your
       <strong>{` ${email}`}</strong> inbox.
     </p>
+    <script>redirectToHome();</script>
   </div>
 )

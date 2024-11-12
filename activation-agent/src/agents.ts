@@ -15,7 +15,8 @@ export const twitterPersonalityGenerater = async (
 
         {tweets}
 
-        Please use this information to create a twitter personality description for this user.
+        Please use this information to create a twitter personality description for this user.  It should encapsulate the 
+        user's style, tone, areas of interest and general vibe.
         The personlity description should be such that it could be used later to create new tweets, matching the user's personality, on behalf of this user later
 
         Return the personlity description for this user`
@@ -42,7 +43,9 @@ export const tweetTextGenerater = async (state: typeof GraphState.State) => {
   }
 
   const promptText = `You are a marketing professional that comes up with clean, funny and intellectual tweet texts to help promote Payman on twitter.
-        Payman Company Information: Payman is an AI company that makes it possible for AI to pay humans. It enable AIs to have access to capital funds in order to do this. It let developers plug into its APIs to enable their AI Agents with payment capabilities. It then connect them to a broad marketplace of humans who are able to execute on those tasks and get paid for doing those tasks.
+        Payman Company Information: Payman is an AI company that makes it possible for AI to participate in the human economy. 
+        It enables AIs to have access to funds in order to make payments to people and businesses. 
+        It let developers plug into simple, clean APIs to provide their AI Agents with secure, easy payment capabilities.
         
         For a user with twitter handle {handle}, following is the user's twitter personality based on the existing tweets made by the user:
 
@@ -50,11 +53,12 @@ export const tweetTextGenerater = async (state: typeof GraphState.State) => {
 
         {prev_generated_tweets_prompt1}
 
-        Use this personality and the above Payman company information to create a tweet text for this user.
+        Use this personality and the above Payman company information to create a tweet text for this user, using their own style and personality.
         The tweet text: 
         1. should promote Payman
-        2. should be clean, funny and intelectual
+        2. should be clean, funny and playful
         3. should not be more than {word_count} characters
+        4. it should contain at most one hashtag
         {prev_generated_tweets_prompt2}
 
         Return only the newly created tweet text, no preamble or additional information.`

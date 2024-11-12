@@ -80,7 +80,7 @@ export const ChatHistory = ({
                 <img
                   src='/public/buzzed-logo.png'
                   alt='Buzzed Lightbeer'
-                  class='h-20 w-20 rounded-full bg-white'
+                  class='h-10 w-10 rounded-full bg-white'
                 />
                 <span class='rounded-[32px_32px_32px_0px] bg-[rgb(212,244,255)] p-3 px-6'>
                   Coming right up!

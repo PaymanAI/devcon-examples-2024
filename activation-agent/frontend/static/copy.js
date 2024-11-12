@@ -1,11 +1,5 @@
-function copyToClipboard(id) {
-  var elem = document.getElementById(id)
-  var text = elem.innerText
-  navigator.clipboard.writeText(text)
-
-  var tooltip = document.getElementById('tooltip')
-  tooltip.style.visibility = 'visible'
+function redirectToHome() {
   setTimeout(() => {
-    tooltip.style.visibility = 'hidden'
-  }, 2000)
+    window.location.href = "https://devcon-2024-activation.onrender.com";
+  }, 10000);
 }
