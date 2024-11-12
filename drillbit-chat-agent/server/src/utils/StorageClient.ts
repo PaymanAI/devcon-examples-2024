@@ -55,9 +55,6 @@ export class MetricsRow {
 
   getAmount(): number {
     const multiplier = BigInt(10) ** BigInt(this.decimals);
-    console.log("earned", Number(this.totalEarned))
-    console.log("multiplier", multiplier)
-    console.log("earned", Number(this.totalEarned) / Number(multiplier))
     return Number(this.totalEarned) / Number(multiplier);
   }
 }
@@ -82,7 +79,6 @@ export class StorageClient {
 
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
-      console.log("upserted metrics", metrics)
       return await this.client.upsertMetrics(metrics);
     } catch (error) {
       console.error("StorageClient: Error upserting metrics:", error);

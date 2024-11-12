@@ -59,7 +59,6 @@ export const ChatWidget: React.FC<{
     }
 
     const handleDepositSuccess = (data: any) => {
-      console.log(data)
       setMessageHistory((prevMessageHistory) => ({
         ...prevMessageHistory,
         messages: [...prevMessageHistory.messages, data.messages],
@@ -81,7 +80,6 @@ export const ChatWidget: React.FC<{
     };
 
     const handleAskDrillbitResponse = (data: any) => {
-      console.log(data)
       setIsTypingIndicatorVisible(false);
       setMessageHistory((prevMessageHistory) => ({
         ...prevMessageHistory,
@@ -91,7 +89,6 @@ export const ChatWidget: React.FC<{
     };
 
     const handleBuyDrinkResponse = (data: any) => {
-      console.log(data)
       setIsTypingIndicatorVisible(false);
       setMessageHistory((prevMessageHistory) => ({
         ...prevMessageHistory,
@@ -100,7 +97,6 @@ export const ChatWidget: React.FC<{
     };
 
     const handleFulfillTalentResponse = (data: any) => {
-      console.log(data)
       setIsTypingIndicatorVisible(false);
       setMessageHistory((prevMessageHistory) => ({
         ...prevMessageHistory,

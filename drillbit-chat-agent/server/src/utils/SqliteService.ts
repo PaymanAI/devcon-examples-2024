@@ -45,7 +45,7 @@ export class SqliteService implements DatabaseMetrics {
         row.totalDrinks,
         row.totalSoberingDrinks,
         row.maxDrunkLevel,
-        Number(row.totalEarned) / 10 ** row.decimals, // Convert back to decimal number
+        row.totalEarned, // Convert back to decimal number
         row.currency as Currency,
         row.id
       );
@@ -57,7 +57,6 @@ export class SqliteService implements DatabaseMetrics {
 
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
-      console.log("upsert start", metrics)
       const result = await this.db.run(
         `INSERT INTO metrics (
 				totalDrinks,
@@ -84,11 +83,9 @@ export class SqliteService implements DatabaseMetrics {
         ]
       );
 
-      console.log("upsert end")
       // Return true if the operation affected any rows
       return result.changes > 0;
     } catch (error) {
-      console.log("upsert error")
       console.error("Error upserting metrics:", error);
       throw error;
     }

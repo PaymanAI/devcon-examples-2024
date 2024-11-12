@@ -15,8 +15,7 @@ import { Currency, MetricsRow, StorageClient } from "./utils/StorageClient";
 
 const db: StorageClient = new StorageClient();
 
-function getUpdatedDrunkLevel(drunkLevel: number, details : any) {
-
+function getUpdatedDrunkLevel(drunkLevel: number, details: any) {
   const soberEffect = Number(details.metadata.drinkSoberEffect) || 0;
   const alcoholContent = Number(details.metadata.drinkAlcoholContent) || 0;
 
@@ -27,8 +26,6 @@ function getUpdatedDrunkLevel(drunkLevel: number, details : any) {
   }
 
   drunkLevel = Math.max(0, Math.min(25, drunkLevel));
-
-  console.log("drunk level", drunkLevel)
   return drunkLevel;
 }
 
@@ -77,13 +74,13 @@ function mapLastResultToMessages(result: any) {
 }
 
 export const fetchMetrics = async () => {
-  const response = await db.getMetricsByCurrency("USD");
+  const response = await db.getMetricsByCurrency(Bun.env.CURRENCY || 'USD');
   if (response) {
     return {
       totalDrinks: response.totalDrinks,
       totalSoberingDrinks: response.totalSoberingDrinks,
       maxDrunkReached: response.maxDrunkLevel,
-      totalRevenue: response.totalEarned,
+      totalRevenue: (Number(response.totalEarned) / (10 ** response.decimals)).toFixed(response.decimals),
     };
   } else {
     return {
@@ -286,7 +283,6 @@ export const server = new Elysia()
     async ({ body: { eventType, details } }) => {
       switch (eventType) {
         case "customer-deposit.successful": {
-          console.log("webhook", details);
           const thread_id = details?.metadata?.thread_id;
           const config = { configurable: { thread_id } };
           await graph.updateState(
@@ -306,41 +302,46 @@ export const server = new Elysia()
           // Upsert into database
           const metrics = await db.getMetricsByCurrency(details.currency);
           if (metrics) {
-
-            const updatedDrunkLevel = getUpdatedDrunkLevel(metrics.maxDrunkLevel, details)
-            console.log("updated level", updatedDrunkLevel)
-
-            var soberDrinks = metrics.totalSoberingDrinks
-            if (details.metadata.drinkSoberEffect) {
-              soberDrinks += 1
-              console.log("sober level", soberDrinks)
-            }
-
-            console.log("db metrics", metrics)
-            // Create new MetricsRow with incremented drinks
-            const updatedMetrics = new MetricsRow(
-              metrics.totalDrinks + 1, // Increment drinks
-              soberDrinks,
-              updatedDrunkLevel,
-              (metrics.totalEarned * BigInt(metrics.decimals)) + BigInt(details.amount), // Use getAmount() to get the proper decimal value
-              metrics.currency
+            const updatedDrunkLevel = getUpdatedDrunkLevel(
+              metrics.maxDrunkLevel,
+              details
             );
 
-            console.log("came here?", updatedMetrics)
-            await db.upsertMetrics(updatedMetrics);
-          } else {
-
-            const updatedDrunkLevel = getUpdatedDrunkLevel(0, details)
-            console.log("updated level", updatedDrunkLevel)
-
-            var soberDrinks = 0
+            var soberDrinks = metrics.totalSoberingDrinks;
             if (details.metadata.drinkSoberEffect) {
-              soberDrinks = 1
-              console.log("sober level", soberDrinks)
+              soberDrinks += 1;
+            }
+
+            try {
+              // Create new MetricsRow with incremented drinks
+              const updatedMetrics = new MetricsRow(
+                metrics.totalDrinks + 1, // Increment drinks
+                soberDrinks,
+                updatedDrunkLevel,
+                BigInt(metrics.totalEarned) + BigInt(details.amount),
+                metrics.currency
+              );
+
+              await db.upsertMetrics(updatedMetrics);
+            } catch (e) {
+              console.log(e);
+            }
+          } else {
+            const updatedDrunkLevel = getUpdatedDrunkLevel(0, details);
+
+            var soberDrinks = 0;
+            if (details.metadata.drinkSoberEffect) {
+              soberDrinks = 1;
             }
 
             // Handle case where no metrics exist for USD
-            const newMetrics = new MetricsRow(1, soberDrinks, updatedDrunkLevel, BigInt(details.amount), Currency.USD);
+            const newMetrics = new MetricsRow(
+              1,
+              soberDrinks,
+              updatedDrunkLevel,
+              BigInt(details.amount),
+              Currency.USD
+            );
             await db.upsertMetrics(newMetrics);
           }
 
