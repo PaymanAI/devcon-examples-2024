@@ -1,11 +1,11 @@
 import { AlreadySubmitted } from '../frontend/fragments/AlreadySubmitted'
 import { AnalysisDisplay } from '../frontend/fragments/AnalysisDisplay'
-import { StatDisplay } from '../frontend/fragments/StatDisplay'
+import { DistributionDisplay } from '../frontend/fragments/DistributionDisplay'
 import { GatherFeedback } from '../frontend/fragments/GatherFeedback'
 import { ProcessingDisplay } from '../frontend/fragments/ProcessingDisplay'
+import { StatDisplay } from '../frontend/fragments/StatDisplay'
 import { ThankYou } from '../frontend/fragments/ThankYou'
 import { WordCloudDisplay } from '../frontend/fragments/WordCloudDisplay'
-import { DistributionDisplay } from '../frontend/fragments/DistributionDisplay'
 
 export const renderGatherFeedback = async ({
   thread_id,

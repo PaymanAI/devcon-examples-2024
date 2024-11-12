@@ -1,16 +1,16 @@
+import { Database } from 'bun:sqlite'
 import {
   type AIMessage,
   SystemMessage,
   type ToolMessage,
 } from '@langchain/core/messages'
-import { END, MemorySaver, START, StateGraph } from '@langchain/langgraph'
+import { END, START, StateGraph } from '@langchain/langgraph'
 import { ToolNode } from '@langchain/langgraph/prebuilt'
 import { ChatOpenAI } from '@langchain/openai'
+import { SqliteSaver } from './checkpoint_sqlite'
 import { drinks } from './drinks'
 import GraphState from './state'
 import { generateTools } from './tools'
-import { SqliteSaver } from "./checkpoint_sqlite"
-import { Database } from 'bun:sqlite'
 
 export const model = new ChatOpenAI({
   model: 'gpt-4o',
@@ -78,7 +78,7 @@ const workflow = new StateGraph(GraphState)
   .addEdge('goodbye', END)
 
 const checkpointer_db = new Database('checkpointer.sqlite')
-const checkpointer = new SqliteSaver(checkpointer_db);
+const checkpointer = new SqliteSaver(checkpointer_db)
 
 export const app = workflow.compile({
   checkpointer,
