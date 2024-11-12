@@ -1,19 +1,19 @@
+import { Database } from 'bun:sqlite'
 import { END, START, StateGraph } from '@langchain/langgraph'
 import {
   tweetTextGenerater,
   twitterIdExtracter,
   twitterPersonalityGenerater,
 } from './agents'
+import { SqliteSaver } from './checkpoint_sqlite'
 import { analyzeUserChoice, checkVerificationResult } from './functions'
 import GraphState from './state'
 import {
   toolCreateRequest,
   toolFetchTweets,
+  toolRequestSubmissionComplete,
   toolVerifyRequestSubmission,
-  toolRequestSubmissionComplete
 } from './tools'
-import { SqliteSaver } from "./checkpoint_sqlite"
-import { Database } from 'bun:sqlite'
 
 const workflow = new StateGraph(GraphState)
   .addNode('tool_fetch_tweets', toolFetchTweets)
@@ -35,8 +35,14 @@ const workflow = new StateGraph(GraphState)
     'new-tweet-requested': 'agent_generate_tweet_text',
   })
   .addEdge('tool_create_request', 'interrupt_request_submission_create')
-  .addEdge('interrupt_request_submission_create', 'agent_request_submission_analyzer')
-  .addEdge('agent_request_submission_analyzer', 'tool_request_submission_verifier')
+  .addEdge(
+    'interrupt_request_submission_create',
+    'agent_request_submission_analyzer',
+  )
+  .addEdge(
+    'agent_request_submission_analyzer',
+    'tool_request_submission_verifier',
+  )
   .addConditionalEdges(
     'tool_request_submission_verifier',
     checkVerificationResult,
@@ -47,8 +53,8 @@ const workflow = new StateGraph(GraphState)
   )
   .addEdge('tool_request_submission_complete', END)
 
-  const checkpointer_db = new Database('checkpointer.sqlite')
-  const checkpointer = new SqliteSaver(checkpointer_db);
+const checkpointer_db = new Database('checkpointer.sqlite')
+const checkpointer = new SqliteSaver(checkpointer_db)
 
 export const app = workflow.compile({
   checkpointer,
