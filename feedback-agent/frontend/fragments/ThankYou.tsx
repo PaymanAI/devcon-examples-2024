@@ -12,8 +12,7 @@ export const ThankYou = () => (
       how to collect your reward!
       <br />
       <br />
-      Head on over to the Payman AI stand to see the analysis of all the
-      feedback.
+      Check out the screen above and see how the AI is analyzing the results.
     </p>
     <button
       type='submit'
