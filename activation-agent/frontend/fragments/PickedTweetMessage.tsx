@@ -28,24 +28,19 @@ export const PickedTweetMessage = ({
     <div class="text-center w-full flex justify-center">
       <a
         class="twitter-share-button inline-flex items-center md:text-xl justify-center px-6 py-3 bg-[#1DA1F2] text-white rounded-full hover:bg-[#1a8cd8] transition-colors duration-300 font-medium"
-        href="https://twitter.com/intent/tweet"
-        data-size="large"
-        data-text={pickedTweet}
-        data-related="PaymanAI"
-        data-url="https://paymanai.com"
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          pickedTweet
+        )}&url=https://paymanai.com&via=PaymanAI`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Share on X
       </a>
-
-      <script
-        async
-        src="https://platform.twitter.com/widgets.js"
-        charset="utf-8"
-      ></script>
     </div>
 
     <p class="mt-8 mb-6 text-gray-700 md:text-2xl">
-      Click on the Post button above to share on your X account and then submit the url of your post below.
+      Click on the Post button above to share on your X account and then submit
+      the url of your post below.
     </p>
 
     <form

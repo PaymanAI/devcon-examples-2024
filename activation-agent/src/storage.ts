@@ -83,7 +83,7 @@ export const completeRequest = async (id: number) => {
     .run({ $id: id, $status: TweetRequestStatus[TweetRequestStatus.completed] })
 }
 
-export const verifiyRequest = async (id: number) => {
+export const verifyRequest = async (id: number) => {
   await db
     .query('UPDATE tweet_requests SET status = $status WHERE id = $id')
     .run({ $id: id, $status: TweetRequestStatus[TweetRequestStatus.verified] })

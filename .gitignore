@@ -10,3 +10,5 @@ activation-agent/package-lock.json
 feedback-agent/checkpointer.sqlite-shm
 feedback-agent/checkpointer.sqlite-wal
 feedback-agent/package-lock.json
+drillbit-chat-agent/client/node_modules
+drillbit-chat-agent/server/bun.lockb

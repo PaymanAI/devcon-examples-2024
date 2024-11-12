@@ -88,12 +88,15 @@ export const server = new Elysia()
         "interrupt_request_submission_create"
       );
       const state = await app.invoke(null, { configurable: { thread_id: id } });
+      console.log("verify submission reached", state)
       const email = state.email;
       if (state.is_verified) {
         return renderThankYouMessage({ email, tweet: body.tweetURL });
       } else {
         const generated_tweet =
           state.generated_tweets[state.generated_tweets.length - 1].content;
+
+          console.log(generated_tweet)
         return renderPickedTweetMessage({
           thread_id: id,
           pickedTweet: generated_tweet,
