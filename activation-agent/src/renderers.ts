@@ -1,6 +1,6 @@
-import { PickedTweetMessage } from '../frontend/fragments/PickedTweetMessage'
 import { CollectDetails } from '../frontend/fragments/CollectDetails'
 import { GeneratedTweetDetails } from '../frontend/fragments/GeneratedTweetDetails'
+import { PickedTweetMessage } from '../frontend/fragments/PickedTweetMessage'
 import { ThankYouMessage } from '../frontend/fragments/ThankYouMessage'
 
 export const renderCollectDetails = async () => {
@@ -35,7 +35,7 @@ export const renderGeneratedTweetDetails = async ({
 export const renderPickedTweetMessage = async ({
   thread_id,
   pickedTweet,
-}: {   thread_id: string; pickedTweet: string }) => {
+}: { thread_id: string; pickedTweet: string }) => {
   const html = await PickedTweetMessage({ thread_id, pickedTweet })
   return new Response(html, {
     headers: { 'Content-Type': 'text/html' },
