@@ -1,13 +1,8 @@
-// @ts-ignore
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { MetricsTab } from "./components/Metrics/MetricsTab";
 import { BeachBarTab } from "./components/BeachBar/BeachBarTab";
-
-// @ts-ignore
 import Triangle from "./assets/svg/Triangle.svg";
-
-// @ts-ignore
-import { Footer } from "./components/ui/Footer";
+import { Footer } from "./components/ui/footer";
 import { useTwitterAuth } from "./utils/TwitterAuth";
 
 const DrillbitChat: React.FC = () => {

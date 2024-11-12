@@ -1,7 +1,5 @@
 import { useContext } from "react";
-// @ts-ignore
 import DrillbitAvatar from "../../assets/images/drillbit-avatar.png";
-// @ts-ignore
 import X from "../../assets/images/X.png";
 import { AppContext } from "../../App";
 

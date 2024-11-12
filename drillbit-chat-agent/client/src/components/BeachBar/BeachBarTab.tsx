@@ -1,4 +1,3 @@
-// @ts-ignore
 import { Card, CardContent } from "../ui/card";
 import { Message } from "../../types/Message";
 import React, { useContext, useEffect, useState } from "react";

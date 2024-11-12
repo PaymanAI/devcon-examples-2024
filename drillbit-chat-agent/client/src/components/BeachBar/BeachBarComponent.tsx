@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Drink } from "../../types/Drink";
-// @ts-ignore
 import Coin from "../../assets/svg/Coin.svg";
 
 import { MessageHistory } from "../../types/MessageHistory";

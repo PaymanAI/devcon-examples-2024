@@ -1,4 +1,3 @@
-// @ts-ignore
 import { Progress } from "../ui/progress";
 
 export const DrunkoMeter = ({ drunkLevel }: { drunkLevel: number }) => {
