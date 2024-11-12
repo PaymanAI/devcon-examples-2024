@@ -2,7 +2,7 @@ import type { Message } from "../types/Message";
 import type { MessageHistory } from "../types/MessageHistory";
 import type { Metrics } from "../types/Metrics";
 
-const BASE_URL = "http://localhost:8080/api";
+const BASE_URL = "https://drillbit-agent.onrender.com/api";
 
 const START_CONVERSATION = "/start?thread_id=";
 const RESET_STATE = "/reset-state?thread_id=";
