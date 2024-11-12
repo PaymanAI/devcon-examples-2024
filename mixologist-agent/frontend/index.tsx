@@ -44,15 +44,15 @@ export const index = () => {
         <script src='/public/lightbeer.js' />
       </head>
 
-      <body class="font-['DM_Sans'] m-0 p-0 flex justify-center items-center h-screen bg-[#f0f0f0] bg-[url('/public/buzzed-bg.jpg')] bg-no-repeat bg-cover">
-        <div class='fixed inset-0 bottom-[70px] overflow-scroll flex justify-center items-center flex-col'>
+      <body class="m-0 flex h-screen items-center justify-center bg-[#f0f0f0] bg-[url('/public/buzzed-bg.jpg')] bg-cover bg-no-repeat p-0 font-['DM_Sans']">
+        <div class='fixed inset-0 bottom-[70px] flex flex-col items-center justify-center overflow-scroll'>
           <div class='flex justify-center'>
             <img src='/public/buzzed-logo.png' alt='Buzz Lightbeer' />
           </div>
 
-          <div class="h-full w-full max-w-[600px] rounded-[20px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] border-4 border-white/80 relative bg-[url('/public/bg-blur.jpg')] bg-no-repeat bg-cover overflow-hidden">
-            <div class='flex justify-between bg-black rounded-t-[20px]'>
-              <span class='p-2.5 uppercase md:text-base text-xs leading-[26px] tracking-widest text-white'>
+          <div class="relative h-full w-full max-w-[600px] overflow-hidden rounded-[20px] border-4 border-white/80 bg-[url('/public/bg-blur.jpg')] bg-cover bg-no-repeat shadow-[0_2px_10px_rgba(0,0,0,0.1)]">
+            <div class='flex justify-between rounded-t-[20px] bg-black'>
+              <span class='p-2.5 text-white text-xs uppercase leading-[26px] tracking-widest md:text-base'>
                 Total Tips: USDC
                 <span
                   id='budget'
@@ -62,7 +62,7 @@ export const index = () => {
                   hx-target='#budget'
                 />
               </span>
-              <span class='p-2.5 uppercase md:text-base text-xs leading-[26px] tracking-widest text-white'>
+              <span class='p-2.5 text-white text-xs uppercase leading-[26px] tracking-widest md:text-base'>
                 Drinks Ordered:
                 <span
                   id='count'
@@ -79,16 +79,16 @@ export const index = () => {
                 hx-post='/start'
                 hx-target='#result'
                 hx-swap='innerHtml'
-                class='flex flex-col justify-center items-center p-5 w-full'
+                class='flex w-full flex-col items-center justify-center p-5'
               >
                 <button
                   type='submit'
-                  class='px-5 py-2.5 bg-[#68F0FF] hover:bg-[rgb(212,244,255)] text-black border-none rounded-md cursor-pointer text-base transition-colors duration-200 flex items-center gap-2 htmx-request:opacity-50'
+                  class='flex cursor-pointer items-center gap-2 rounded-md border-none bg-[#68F0FF] px-5 py-2.5 text-base text-black htmx-request:opacity-50 transition-colors duration-200 hover:bg-[rgb(212,244,255)]'
                   hx-indicator='#spinner'
                 >
                   <svg
                     id='spinner'
-                    class='hidden transition-[display] duration-500 ease-in mx-auto htmx-request:block'
+                    class='mx-auto htmx-request:block hidden transition-[display] duration-500 ease-in'
                     xmlns='http://www.w3.org/2000/svg'
                     width='1em'
                     height='1em'
@@ -119,21 +119,21 @@ export const index = () => {
           </div>
         </div>
 
-        <div class='absolute bottom-0 flex flex-row justify-center items-center gap-2.5 mb-5 bg-black/50 px-7 py-1.5 rounded-[99px] text-white'>
+        <div class='absolute bottom-0 mb-5 flex flex-row items-center justify-center gap-2.5 rounded-[99px] bg-black/50 px-7 py-1.5 text-white'>
           <div class='text-center text-white text-xs sm:text-sm'>
-            Powered by{' '}
+            Powered by
             <a href='https://paymanai.com>'>
               <img
                 src='/public/payman-white.png'
                 alt='Payman AI'
-                class='inline-block h-4 pl-1 mt-[2px]'
+                class='mt-[2px] inline-block h-4 pl-1'
               />
             </a>
             <a href='https://coinbase.com>'>
               <img
                 src='/public/coinbase.png'
                 alt='Coinbase'
-                class='px-2 inline-block h-4'
+                class='inline-block h-4 px-2'
               />
             </a>
           </div>

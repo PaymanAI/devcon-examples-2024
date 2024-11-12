@@ -5,7 +5,8 @@ export const OrderList = ({ orders }: { orders: DrinkOrder[] }) => {
     <>
       {orders.map(order => {
         return (
-          <li class='bg-[#f1f1f1] mx-2.5 my-2.5 p-4 rounded flex justify-between items-center gap-8 shadow-[0_2px_10px_rgba(0,0,0,0.3)]'>
+          // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
+          <li class='mx-2.5 my-2.5 flex items-center justify-between gap-8 rounded bg-[#f1f1f1] p-4 shadow-[0_2px_10px_rgba(0,0,0,0.3)]'>
             <div>
               <div class='text-base'>
                 Order <strong>{order.id}</strong> at
@@ -13,7 +14,7 @@ export const OrderList = ({ orders }: { orders: DrinkOrder[] }) => {
                 <br />
                 Drink: <strong>{order.drink_name}</strong>
               </div>
-              <div class='text-sm mt-1.5 leading-[1.4]'>
+              <div class='mt-1.5 text-sm leading-[1.4]'>
                 Instructions:
                 <br />
                 {order.instructions}
@@ -27,7 +28,7 @@ export const OrderList = ({ orders }: { orders: DrinkOrder[] }) => {
             >
               <button
                 id='send-btn'
-                class='bg-[#ef6f1c] hover:bg-[#ff7f2a] text-white border-none py-1.5 px-2.5 rounded-lg cursor-pointer h-[50px] text-base font-bold w-[180px]'
+                class='h-[50px] w-[180px] cursor-pointer rounded-lg border-none bg-[#ef6f1c] px-2.5 py-1.5 font-bold text-base text-white hover:bg-[#ff7f2a]'
                 type='submit'
               >
                 Confirm
@@ -37,7 +38,7 @@ export const OrderList = ({ orders }: { orders: DrinkOrder[] }) => {
         )
       })}
       {orders.length === 0 && (
-        <div class='text-center text-lg text-[#ccc] mt-[50px]'>
+        <div class='mt-[50px] text-center text-[#ccc] text-lg'>
           No orders at the moment
         </div>
       )}

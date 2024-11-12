@@ -22,8 +22,8 @@ export const CheckoutStatus = async ({
   }
 
   return (
-    <div class='flex justify-start items-center gap-5'>
-      <div class='w-20 h-20 flex items-center'>
+    <div class='flex items-center justify-start gap-5'>
+      <div class='flex h-20 w-20 items-center'>
         {finished ? (
           tip_status === 'success' ? (
             <SuccessIcon />
@@ -31,15 +31,15 @@ export const CheckoutStatus = async ({
             <ErrorIcon />
           )
         ) : (
-          <Loading className='w-20 h-20 self-center' />
+          <Loading className='h-20 w-20 self-center' />
         )}
       </div>
-      <div class='text-left text-base font-bold'>{message}</div>
+      <div class='text-left font-bold text-base'>{message}</div>
       {finished && (
         <button
           type='button'
           onclick='resetScreen(0)'
-          class='text-sm leading-[1.4] py-1.5 px-2.5 rounded-lg cursor-pointer bg-black text-white'
+          class='cursor-pointer rounded-lg bg-black px-2.5 py-1.5 text-sm text-white leading-[1.4]'
         >
           New Chat
         </button>

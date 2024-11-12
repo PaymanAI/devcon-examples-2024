@@ -28,7 +28,7 @@ export const MessageInput = ({
   return (
     <>
       <form
-        class='flex absolute bottom-0 rounded-[40px] h-[50px] bg-white/30 px-5 py-2.5 right-10 left-10'
+        class='absolute right-10 bottom-0 left-10 flex h-[50px] rounded-[40px] bg-white/30 px-5 py-2.5'
         hx-post={postEndpoint}
         hx-get={getEndpoint}
         hx-target='#result'
@@ -42,24 +42,18 @@ export const MessageInput = ({
           name='message'
           disabled={!postEndpoint}
           placeholder='Type your message'
-          class='flex-grow px-2.5 py-2.5 border-0 mr-2.5 bg-transparent text-white text-base h-[30px] 
-        placeholder:opacity-80 placeholder:text-white
-        focus:outline-none focus:border-0
-        disabled:placeholder:opacity-80 disabled:placeholder:text-[#ccc]'
+          class='mr-2.5 h-[30px] flex-grow border-0 bg-transparent px-2.5 py-2.5 text-base text-white placeholder:text-white placeholder:opacity-80 focus:border-0 focus:outline-none disabled:placeholder:text-[#ccc] disabled:placeholder:opacity-80'
         />
         <button
           id='send-btn'
           type='submit'
           disabled={!postEndpoint}
           hx-indicator='#spinner'
-          class='bg-transparent p-0 hover:bg-transparent disabled:opacity-80 disabled:cursor-default 
-        [&_.hide-on-request]:text-[#68F0FF] 
-        disabled:[&_.hide-on-request]:text-[#ccc]
-        disabled:[&_.hide-on-request]:cursor-default'
+          class='bg-transparent p-0 hover:bg-transparent disabled:cursor-default disabled:opacity-80 [&_.hide-on-request]:text-[#68F0FF] disabled:[&_.hide-on-request]:cursor-default disabled:[&_.hide-on-request]:text-[#ccc]'
         >
           <svg
             id='spinner'
-            class='hidden transition-[display] duration-500 ease-in mx-auto htmx-request:block'
+            class='mx-auto htmx-request:block hidden transition-[display] duration-500 ease-in'
             xmlns='http://www.w3.org/2000/svg'
             width='1em'
             height='1em'

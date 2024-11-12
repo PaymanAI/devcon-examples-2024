@@ -414,6 +414,7 @@ CREATE TABLE IF NOT EXISTS writes (
     }
 
     const preparedCheckpoint: Partial<Checkpoint> = copyCheckpoint(checkpoint)
+    // biome-ignore lint/performance/noDelete: <explanation>
     delete preparedCheckpoint.pending_sends
 
     const [type1, serializedCheckpoint] =
@@ -436,7 +437,7 @@ CREATE TABLE IF NOT EXISTS writes (
 
     this.db
       .prepare(
-        `INSERT OR REPLACE INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, parent_checkpoint_id, type, checkpoint, metadata) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        'INSERT OR REPLACE INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, parent_checkpoint_id, type, checkpoint, metadata) VALUES (?, ?, ?, ?, ?, ?, ?)',
       )
       .run(...row)
 
