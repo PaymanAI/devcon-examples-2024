@@ -9,7 +9,7 @@ import { createFundRequest } from './tools'
 
 const chatModel = new ChatOpenAI({
   openAIApiKey: Bun.env.OPENAI_API_KEY,
-  modelName: 'gpt-4o',
+  modelName: 'gpt-3.5-turbo',
   temperature: 0.7,
 })
 
@@ -149,8 +149,9 @@ export const fund_requester = async (
     state.customer_id,
     config.configurable?.thread_id,
     paidDrink.price,
+    paidDrink
   )
-  const { checkoutUrl } = JSON.parse(response || '{}')
+  const {checkoutUrl} = JSON.parse(response)
   return {
     extra: {
       msg: `Click to pay ${paidDrink.price} ${paidDrink.currency} for Drillbit's ${paidDrink.name}`,

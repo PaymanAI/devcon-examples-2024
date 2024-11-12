@@ -11,6 +11,26 @@ import { talents } from "./config";
 import { graph } from "./graph";
 import { START_STATE } from "./state";
 import type { WSMessage } from "./types/Socket";
+import { Currency, MetricsRow, StorageClient } from "./utils/StorageClient";
+
+const db: StorageClient = new StorageClient();
+
+function getUpdatedDrunkLevel(drunkLevel: number, details : any) {
+
+  const soberEffect = Number(details.metadata.drinkSoberEffect) || 0;
+  const alcoholContent = Number(details.metadata.drinkAlcoholContent) || 0;
+
+  if (!isNaN(soberEffect) && soberEffect > 0) {
+    drunkLevel = drunkLevel - soberEffect;
+  } else if (!isNaN(alcoholContent) && alcoholContent > 0) {
+    drunkLevel = drunkLevel + alcoholContent;
+  }
+
+  drunkLevel = Math.max(0, Math.min(25, drunkLevel));
+
+  console.log("drunk level", drunkLevel)
+  return drunkLevel;
+}
 
 // ****  Map graph state to chat messages ****
 function mapStateToMessages(graphState: StateSnapshot) {
@@ -55,6 +75,25 @@ function mapLastResultToMessages(result: any) {
 
   return response;
 }
+
+export const fetchMetrics = async () => {
+  const response = await db.getMetricsByCurrency("USD");
+  if (response) {
+    return {
+      totalDrinks: response.totalDrinks,
+      totalSoberingDrinks: response.totalSoberingDrinks,
+      maxDrunkReached: response.maxDrunkLevel,
+      totalRevenue: response.totalEarned,
+    };
+  } else {
+    return {
+      totalDrinks: 0,
+      totalSoberingDrinks: 0,
+      maxDrunkReached: 0,
+      totalRevenue: 0,
+    };
+  }
+};
 
 const askDrillbit = async (body: any) => {
   const message = body.message!;
@@ -182,14 +221,14 @@ export const server = new Elysia()
   .ws("/ws", {
     open: (ws) => {},
     message: (ws, message: any) => {
-
       if (message.eventType === "register") {
         const threadId = message.data.threadId ?? "unknown";
         websockets.set(ws.id, threadId);
         clients.set(threadId, (message: WSMessage) => {
           ws.raw.send(JSON.stringify(message));
         });
-      } if (message.eventType === "unregister") {
+      }
+      if (message.eventType === "unregister") {
         const threadId = message.data.threadId ?? "unknown";
         websockets.delete(threadId);
         clients.delete(threadId);
@@ -211,11 +250,11 @@ export const server = new Elysia()
     },
   })
   // **** 1. get the graph state ****
-  .get("/get-graph-state", async ({ query: { thread_id } }) => {
+  .get("/api/get-graph-state", async ({ query: { thread_id } }) => {
     return await graph.getState({ configurable: { thread_id } });
   })
   // **** 2. start the graph ****
-  .post("/start", async ({ query: { thread_id, handle = "dude" } }) => {
+  .post("/api/start", async ({ query: { thread_id, handle = "dude" } }) => {
     const graphState = await graph.getState({ configurable: { thread_id } });
 
     if (
@@ -243,10 +282,11 @@ export const server = new Elysia()
   })
   // **** 3. handle webhooks ****
   .post(
-    "/webhook",
+    "/api/webhook",
     async ({ body: { eventType, details } }) => {
       switch (eventType) {
         case "customer-deposit.successful": {
+          console.log("webhook", details);
           const thread_id = details?.metadata?.thread_id;
           const config = { configurable: { thread_id } };
           await graph.updateState(
@@ -262,6 +302,48 @@ export const server = new Elysia()
           await graph.invoke(null, config);
 
           const state = await graph.getState({ configurable: { thread_id } });
+
+          // Upsert into database
+          const metrics = await db.getMetricsByCurrency(details.currency);
+          if (metrics) {
+
+            const updatedDrunkLevel = getUpdatedDrunkLevel(metrics.maxDrunkLevel, details)
+            console.log("updated level", updatedDrunkLevel)
+
+            var soberDrinks = metrics.totalSoberingDrinks
+            if (details.metadata.drinkSoberEffect) {
+              soberDrinks += 1
+              console.log("sober level", soberDrinks)
+            }
+
+            console.log("db metrics", metrics)
+            // Create new MetricsRow with incremented drinks
+            const updatedMetrics = new MetricsRow(
+              metrics.totalDrinks + 1, // Increment drinks
+              soberDrinks,
+              updatedDrunkLevel,
+              (metrics.totalEarned * BigInt(metrics.decimals)) + BigInt(details.amount), // Use getAmount() to get the proper decimal value
+              metrics.currency
+            );
+
+            console.log("came here?", updatedMetrics)
+            await db.upsertMetrics(updatedMetrics);
+          } else {
+
+            const updatedDrunkLevel = getUpdatedDrunkLevel(0, details)
+            console.log("updated level", updatedDrunkLevel)
+
+            var soberDrinks = 0
+            if (details.metadata.drinkSoberEffect) {
+              soberDrinks = 1
+              console.log("sober level", soberDrinks)
+            }
+
+            // Handle case where no metrics exist for USD
+            const newMetrics = new MetricsRow(1, soberDrinks, updatedDrunkLevel, BigInt(details.amount), Currency.USD);
+            await db.upsertMetrics(newMetrics);
+          }
+
           broadcastMessage(thread_id, {
             eventType: "deposit-success",
             data: {
@@ -283,11 +365,10 @@ export const server = new Elysia()
     }
   )
   // **** 4. reset state ****
-  .post("/reset-state", async ({ query: { thread_id } }) => {
+  .post("/api/reset-state", async ({ query: { thread_id } }) => {
     const config = { configurable: { thread_id } };
 
     await graph.updateState(config, START_STATE, START);
-
     const graphState = await graph.getState({ configurable: { thread_id } });
 
     if (
@@ -296,6 +377,9 @@ export const server = new Elysia()
     ) {
       return mapStateToMessages(graphState);
     }
+  })
+  .get("/api/metrics", async () => {
+    return await fetchMetrics();
   });
 
 // Function to broadcast a message to all connected clients

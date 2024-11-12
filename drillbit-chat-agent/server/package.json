@@ -9,7 +9,8 @@
     },
     "devDependencies": {
         "@types/bun": "latest",
-        "@biomejs/biome": "1.9.3"
+        "@biomejs/biome": "1.9.3",
+        "@types/redis": "^4.0.10"
     },
     "peerDependencies": {
         "typescript": "^5.0.0"
@@ -21,6 +22,7 @@
         "@langchain/openai": "^0.3.5",
         "elysia": "^1.1.19",
         "paymanai": "1.2.1",
-        "uuid": "^10.0.0"
+        "uuid": "^10.0.0",
+        "redis": "^4.7.0"
     }
 }

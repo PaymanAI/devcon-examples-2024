@@ -9,13 +9,20 @@ export const createFundRequest = async (
   user_id: string,
   thread_id: string,
   amount: number,
+  paidDrink: any
 ) => {
+
   const body = {
     customerId: user_id,
+    walletId: Bun.env.WALLET_ID,
     amountDecimal: amount,
-    currencyCode: "USD",
+    currencyCode: paidDrink.currency,
     metadata: {
       thread_id: thread_id,
+      drinkName: paidDrink.name,
+      drinkCurrency: paidDrink.currency,
+      drinkAlcoholContent: paidDrink.alcoholContent,
+      drinkSoberEffect: paidDrink.soberEffect
     },
   }
 
