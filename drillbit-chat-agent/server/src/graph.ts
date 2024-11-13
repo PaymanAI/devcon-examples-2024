@@ -13,7 +13,7 @@ import GraphState from './state'
 const checkpointer = new MemorySaver()
 
 function evaluate_user_input(state: typeof GraphState.State) {
-  if (state.message_count >= 10) {
+  if (state.message_count >= 100) {
     return END
   } else if (state.message_count % 2 === 0 && state.message_count > 0) {
     return 'ask_for_drink'
@@ -23,7 +23,7 @@ function evaluate_user_input(state: typeof GraphState.State) {
 }
 
 function evaluate_action(state: typeof GraphState.State) {
-  if (state.message_count >= 10) {
+  if (state.message_count >= 100) {
     return END
   } else if (state.extra.isDrinking) {
     return 'wait_to_entertain'
@@ -33,7 +33,7 @@ function evaluate_action(state: typeof GraphState.State) {
 }
 
 function evaluate_talent_request(state: typeof GraphState.State) {
-  if (state.message_count >= 10) {
+  if (state.message_count >= 100) {
     return END
   } else if (state.extra.talentReq?.id === 'joke') {
     return 'tell_a_joke'

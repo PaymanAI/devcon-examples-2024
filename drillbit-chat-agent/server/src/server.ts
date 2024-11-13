@@ -74,13 +74,16 @@ function mapLastResultToMessages(result: any) {
 }
 
 export const fetchMetrics = async () => {
-  const response = await db.getMetricsByCurrency(Bun.env.CURRENCY || 'USD');
+  const response = await db.getMetricsByCurrency(Bun.env.CURRENCY || "USD");
   if (response) {
     return {
       totalDrinks: response.totalDrinks,
       totalSoberingDrinks: response.totalSoberingDrinks,
       maxDrunkReached: response.maxDrunkLevel,
-      totalRevenue: (Number(response.totalEarned) / (10 ** response.decimals)).toFixed(response.decimals),
+      totalRevenue: (
+        Number(response.totalEarned) /
+        10 ** response.decimals
+      ).toFixed(response.decimals),
     };
   } else {
     return {
@@ -95,8 +98,10 @@ export const fetchMetrics = async () => {
 const askDrillbit = async (body: any) => {
   const message = body.message!;
   const thread_id = body.threadId;
-
-  const config = { configurable: { thread_id } };
+  const metrics = await fetchMetrics();
+  const config = {
+    configurable: { thread_id, drunkLevel: metrics.maxDrunkReached },
+  };
 
   try {
     await graph.updateState(
@@ -119,7 +124,7 @@ const askDrillbit = async (body: any) => {
     data: {
       messages: mapLastResultToMessages(result),
       message_count: result.message_count,
-      extra: result.extra,
+      extra: { ...result.extra, drunkLevel: metrics.maxDrunkReached },
     },
   };
   broadcastMessage(thread_id, payload);
@@ -129,8 +134,9 @@ const buyDrink = async (body: any) => {
   const drink = body.drink!;
   const thread_id = body.threadId;
   const user_id = body.userId;
+  const metrics = await fetchMetrics();
 
-  const config = { configurable: { thread_id } };
+  const config = { configurable: { thread_id, drunkLevel: metrics.maxDrunkReached } };
 
   try {
     await graph.updateState(
@@ -156,7 +162,7 @@ const buyDrink = async (body: any) => {
     data: {
       messages: mapLastResultToMessages(result),
       message_count: result.message_count,
-      extra: result.extra,
+      extra: { ...result.extra, drunkLevel: metrics.maxDrunkReached },
     },
   };
 
@@ -167,8 +173,9 @@ const fulfillTalentRequest = async (body: any) => {
   const talent_request = body.talent!;
   const thread_id = body.threadId;
   const user_id = body.userId;
+  const metrics = await fetchMetrics();
 
-  const config = { configurable: { thread_id } };
+  const config = { configurable: { thread_id, drunkLevel: metrics.maxDrunkReached } };
 
   try {
     await graph.updateState(
@@ -179,6 +186,7 @@ const fulfillTalentRequest = async (body: any) => {
         customer_id: user_id,
         extra: {
           talentReq: talent_request,
+          drunkLevel: metrics.maxDrunkReached
         },
       },
       "wait_to_entertain"
@@ -194,7 +202,7 @@ const fulfillTalentRequest = async (body: any) => {
     data: {
       messages: mapLastResultToMessages(result),
       message_count: result.message_count,
-      extra: result.extra,
+      extra: { ...result.extra, drunkLevel: metrics.maxDrunkReached },
     },
   };
 
@@ -252,7 +260,9 @@ export const server = new Elysia()
   })
   // **** 2. start the graph ****
   .post("/api/start", async ({ query: { thread_id, handle = "dude" } }) => {
-    const graphState = await graph.getState({ configurable: { thread_id } });
+    const metrics = await fetchMetrics();
+    const config = { configurable: { thread_id, drunkLevel: metrics.maxDrunkReached } };
+    const graphState = await graph.getState(config);
 
     if (
       graphState.values?.messages?.length !== undefined &&
@@ -284,7 +294,9 @@ export const server = new Elysia()
       switch (eventType) {
         case "customer-deposit.successful": {
           const thread_id = details?.metadata?.thread_id;
-          const config = { configurable: { thread_id } };
+          const metrics = await db.getMetricsByCurrency(details.currency);
+
+          const config = { configurable: { thread_id,  drunkLevel: metrics?.maxDrunkLevel } };
           await graph.updateState(
             config,
             {
@@ -297,10 +309,10 @@ export const server = new Elysia()
           );
           await graph.invoke(null, config);
 
-          const state = await graph.getState({ configurable: { thread_id } });
+          const state = await graph.getState(config);
 
           // Upsert into database
-          const metrics = await db.getMetricsByCurrency(details.currency);
+          
           if (metrics) {
             const updatedDrunkLevel = getUpdatedDrunkLevel(
               metrics.maxDrunkLevel,

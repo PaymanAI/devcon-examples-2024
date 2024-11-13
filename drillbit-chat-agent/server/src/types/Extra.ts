@@ -3,6 +3,7 @@ import type { Talent } from './Talent'
 
 export interface Extra {
   msg: string
+  drunkLevel?: number
   status?: string
   checkoutUrl?: string
   isDrinking?: boolean

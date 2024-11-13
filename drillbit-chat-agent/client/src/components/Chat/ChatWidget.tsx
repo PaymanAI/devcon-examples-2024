@@ -188,11 +188,12 @@ export const ChatWidget: React.FC<{
       threadId,
     });
 
-    // setIsTyping(false);
     setInput("");
     setIsTypingIndicatorVisible(true);
-    // setIsLoading(true);
   };
+
+  const showingExtra = (messageHistory?.extra?.alcoholicDrinks || messageHistory?.extra?.talents || messageHistory?.extra?.checkoutUrl) ? true : false
+  const isDisabled = isLoading || isGeneratingImage || !wsConnectionStatus || showingExtra;
 
   return (
     <div className="flex-1 flex flex-col">
@@ -379,7 +380,7 @@ export const ChatWidget: React.FC<{
       >
         <input
           ref={inputRef}
-          disabled={isLoading || isGeneratingImage || !wsConnectionStatus}
+          disabled={ isDisabled }
           type="text"
           value={input}
           onChange={handleInputChange}
@@ -389,7 +390,7 @@ export const ChatWidget: React.FC<{
         <button
           type="submit"
           className="text-white rounded-full bg-blue-500 disabled:bg-gray-500 p-2"
-          disabled={isLoading || isGeneratingImage || !wsConnectionStatus}
+          disabled={ isDisabled }
         >
           <SendHorizonal strokeWidth={2} />
         </button>

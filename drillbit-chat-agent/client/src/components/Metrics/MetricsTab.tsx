@@ -10,7 +10,6 @@ const MetricsTab: React.FC = () => {
   useEffect(() => {
     getMetricsAPI(
       (metrics: Metrics) => {
-        console.log(metrics)
         setMetrics(metrics)
       },
       (error: string) => console.error(error)
