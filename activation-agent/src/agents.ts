@@ -58,7 +58,8 @@ export const tweetTextGenerater = async (state: typeof GraphState.State) => {
         1. should promote Payman
         2. should be clean, funny and playful
         3. should not be more than {word_count} characters
-        4. it should contain at most one hashtag
+        4. it should contain the hashtag #igotpaidbyai
+        5. it should not have any emojis or links
         {prev_generated_tweets_prompt2}
 
         Return only the newly created tweet text, no preamble or additional information.`
