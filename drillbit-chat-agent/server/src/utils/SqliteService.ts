@@ -57,13 +57,6 @@ export class SqliteService implements DatabaseMetrics {
 
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
-      // Validate maxDrunkLevel
-      const maxDrunkLevel = Number(metrics.maxDrunkLevel);
-      if (!Number.isInteger(maxDrunkLevel)) {
-        throw new Error(`Invalid maxDrunkLevel: ${metrics.maxDrunkLevel}`);
-      }
-
-      console.log("upserting metrics with validated maxDrunkLevel:", maxDrunkLevel);
       
       const result = await this.db.run(
         `INSERT INTO metrics (
@@ -74,33 +67,33 @@ export class SqliteService implements DatabaseMetrics {
           currency,
           decimals
         ) VALUES (?, ?, ?, ?, ?, ?)
-        ON CONFLICT(currency) 
-        DO UPDATE SET
-          totalDrinks = excluded.totalDrinks,
-          totalSoberingDrinks = excluded.totalSoberingDrinks,
-          maxDrunkLevel = ?,  -- Separate bind parameter for update
-          totalEarned = excluded.totalEarned,
-          decimals = excluded.decimals
-        WHERE currency = ?;`,
+        ON CONFLICT(currency) DO UPDATE SET
+          totalDrinks = ?,
+          totalSoberingDrinks = ?,
+          maxDrunkLevel = ?,
+          totalEarned = ?,
+          decimals = ?`,
         [
+          // INSERT values
           metrics.totalDrinks,
           metrics.totalSoberingDrinks,
-          maxDrunkLevel,
+          metrics.maxDrunkLevel,
           metrics.totalEarned,
           metrics.currency,
           metrics.decimals,
-          maxDrunkLevel,  // Additional parameter for the UPDATE
-          metrics.currency
+          // UPDATE values
+          metrics.totalDrinks,
+          metrics.totalSoberingDrinks,
+          metrics.maxDrunkLevel,
+          metrics.totalEarned,
+          metrics.decimals
         ]
       );
 
+      console.log(result)
       return result.changes > 0;
     } catch (error) {
-      console.error("Error upserting metrics:", {
-        error,
-        maxDrunkLevel: metrics.maxDrunkLevel,
-        type: typeof metrics.maxDrunkLevel
-      });
+      console.error("Error upserting metrics:", error);
       throw error;
     }
   }
