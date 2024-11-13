@@ -336,7 +336,7 @@ export const server = new Elysia()
 
               await db.upsertMetrics(updatedMetrics);
             } catch (e) {
-              console.log(e);
+              console.log("failed to upsert metrics", e);
             }
           } else {
             const updatedDrunkLevel = getUpdatedDrunkLevel(0, details);
@@ -352,7 +352,7 @@ export const server = new Elysia()
               soberDrinks,
               updatedDrunkLevel,
               BigInt(details.amount),
-              Currency.USD
+              (Bun.env.CURRENCY || "USD") as Currency
             );
             await db.upsertMetrics(newMetrics);
           }

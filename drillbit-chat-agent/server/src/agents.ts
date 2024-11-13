@@ -108,7 +108,7 @@ export const answer_as_agent = async (state: typeof GraphState.State) => {
   const metrics = await fetchMetrics();
   const drunkLevel = metrics.maxDrunkReached ? metrics.maxDrunkReached + '' : '0'
   const personalityPrompt = PERSONALITY_PROMPT.replace(/{drunk_level}/g, drunkLevel);
-
+  
   if (state.extra.isDrinking) {
     context = [new SystemMessage(personalityPrompt + THANK_YOU_PROMPT)];
   } else {

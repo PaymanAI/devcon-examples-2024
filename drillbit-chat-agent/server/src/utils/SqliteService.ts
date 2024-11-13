@@ -17,7 +17,8 @@ export class SqliteService implements DatabaseMetrics {
 
   constructor() {
     this.db.run(
-      `CREATE TABLE IF NOT EXISTS metrics (
+      `DROP TABLE IF EXISTS metrics;
+      CREATE TABLE IF NOT EXISTS metrics (
 			  id INTEGER PRIMARY KEY AUTOINCREMENT,
 			  totalDrinks INTEGER,
 			  totalSoberingDrinks INTEGER,
