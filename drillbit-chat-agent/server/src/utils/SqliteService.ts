@@ -17,8 +17,7 @@ export class SqliteService implements DatabaseMetrics {
 
   constructor() {
     this.db.run(
-      `DROP TABLE IF EXISTS metrics;
-      CREATE TABLE IF NOT EXISTS metrics (
+      `CREATE TABLE IF NOT EXISTS metrics (
 			  id INTEGER PRIMARY KEY AUTOINCREMENT,
 			  totalDrinks INTEGER,
 			  totalSoberingDrinks INTEGER,
@@ -58,6 +57,7 @@ export class SqliteService implements DatabaseMetrics {
 
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
+      console.log("upserting metrics", metrics)
       const result = await this.db.run(
         `INSERT INTO metrics (
 				totalDrinks,
