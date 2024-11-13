@@ -90,11 +90,9 @@ export class SqliteService implements DatabaseMetrics {
         ]
       );
 
-      console.log(result)
-      return result.changes > 0;
+      return true;
     } catch (error) {
       console.error("Error upserting metrics:", error);
-      throw error;
     }
   }
 }
