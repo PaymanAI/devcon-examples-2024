@@ -31,7 +31,9 @@ export const CheckoutLink = async ({
             Thank you! Here's a link where you can send your USDC to the bar
             tender, via the Payman system.
           </div>
-          <div class='my-10 flex w-[60%] justify-center'>{qrCode}</div>
+          <div class='qrcode my-10 flex w-[60%] justify-center'>
+            {qrCode.replace('<svg', '<svg style="width:100%;height:100%"')}
+          </div>
           <div class='flex justify-center'>
             <a
               href={url}
