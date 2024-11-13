@@ -58,41 +58,36 @@ export class SqliteService implements DatabaseMetrics {
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
       
-      const result = await this.db.run(
+      await this.db.run(
         `INSERT INTO metrics (
-          totalDrinks,
-          totalSoberingDrinks,
-          maxDrunkLevel,
-          totalEarned,
-          currency,
-          decimals
-        ) VALUES (?, ?, ?, ?, ?, ?)
-        ON CONFLICT(currency) DO UPDATE SET
-          totalDrinks = ?,
-          totalSoberingDrinks = ?,
-          maxDrunkLevel = ?,
-          totalEarned = ?,
-          decimals = ?`,
+				totalDrinks,
+				totalSoberingDrinks,
+				maxDrunkLevel,
+				totalEarned,
+				currency,
+				decimals
+			) VALUES (?, ?, ?, ?, ?, ?)
+			ON CONFLICT(currency) 
+			DO UPDATE SET
+				totalDrinks = excluded.totalDrinks,
+				totalSoberingDrinks = excluded.totalSoberingDrinks,
+				maxDrunkLevel = excluded.maxDrunkLevel,
+				totalEarned = excluded.totalEarned,
+				decimals = excluded.decimals`,
         [
-          // INSERT values
           metrics.totalDrinks,
           metrics.totalSoberingDrinks,
           metrics.maxDrunkLevel,
           metrics.totalEarned,
           metrics.currency,
           metrics.decimals,
-          // UPDATE values
-          metrics.totalDrinks,
-          metrics.totalSoberingDrinks,
-          metrics.maxDrunkLevel,
-          metrics.totalEarned,
-          metrics.decimals
         ]
       );
 
       return true;
     } catch (error) {
       console.error("Error upserting metrics:", error);
+      return true;
     }
   }
 }

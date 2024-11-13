@@ -79,7 +79,6 @@ export class StorageClient {
 
   async upsertMetrics(metrics: MetricsRow): Promise<boolean> {
     try {
-      console.log("metrics", metrics)
       return await this.client.upsertMetrics(metrics);
     } catch (error) {
       console.error("StorageClient: Error upserting metrics:", error);

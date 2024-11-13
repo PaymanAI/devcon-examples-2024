@@ -333,7 +333,6 @@ export const server = new Elysia()
                 BigInt(metrics.totalEarned) + BigInt(details.amount),
                 metrics.currency
               );
-              console.log("webhook here", updatedMetrics)
               await db.upsertMetrics(updatedMetrics);
             } catch (e) {
               console.log("failed to upsert metrics", e);
@@ -354,7 +353,6 @@ export const server = new Elysia()
               BigInt(details.amount),
               (Bun.env.CURRENCY || "USD") as Currency
             );
-            console.log("webhook there", newMetrics)
             await db.upsertMetrics(newMetrics);
           }
 
