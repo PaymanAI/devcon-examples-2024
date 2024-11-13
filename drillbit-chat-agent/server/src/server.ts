@@ -294,7 +294,7 @@ export const server = new Elysia()
       switch (eventType) {
         case "customer-deposit.successful": {
           const thread_id = details?.metadata?.thread_id;
-          const metrics = await db.getMetricsByCurrency(details.currency);
+          const metrics = await db.getMetricsByCurrency(Bun.env.CURRENCY || 'USD');
 
           const config = { configurable: { thread_id,  drunkLevel: metrics?.maxDrunkLevel } };
           await graph.updateState(
