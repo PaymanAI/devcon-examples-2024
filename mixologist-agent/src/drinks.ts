@@ -1,259 +1,148 @@
 export const drinks = [
   {
-    name: 'Mojito',
+    name: 'Vodka Soda',
     instructions:
-      'Muddle mint leaves with lime juice and sugar. Add rum and ice, then top with club soda. Garnish with mint sprig and lime wedge.',
+      'Pour 1.5 oz of Vodka (42Below) over ice in a highball glass. Top with soda water and garnish with a lime wedge.',
     price: 10,
-  },
-  {
-    name: 'Old Fashioned',
-    instructions:
-      'Muddle sugar with bitters and water. Add whiskey and ice, stir until chilled. Garnish with orange peel and cherry.',
-    price: 10,
-  },
-  {
-    name: 'Margarita',
-    instructions:
-      'Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass filled with ice. Garnish with lime wedge.',
-    price: 11,
-  },
-  {
-    name: 'Cosmopolitan',
-    instructions:
-      'Shake vodka, triple sec, cranberry juice, and lime juice with ice. Strain into a chilled martini glass. Garnish with lime wheel.',
-    price: 10,
-  },
-  {
-    name: 'Piña Colada',
-    instructions:
-      'Blend rum, coconut cream, and pineapple juice with ice. Pour into a glass and garnish with pineapple slice and cherry.',
-    price: 12,
-  },
-  {
-    name: 'Espresso Martini',
-    instructions:
-      'Shake vodka, coffee liqueur, and espresso with ice. Strain into a chilled martini glass. Garnish with coffee beans.',
-    price: 11,
-  },
-  {
-    name: 'Mai Tai',
-    instructions:
-      'Shake rum, lime juice, orange curaçao, and orgeat syrup with ice. Strain into a glass filled with crushed ice. Garnish with mint and lime.',
-    price: 9,
-  },
-  {
-    name: 'Manhattan',
-    instructions:
-      'Stir rye whiskey, sweet vermouth, and bitters with ice. Strain into a chilled glass and garnish with a cherry.',
-    price: 12,
-  },
-  {
-    name: 'Whiskey Sour',
-    instructions:
-      'Shake whiskey, lemon juice, and simple syrup with ice. Strain into a glass with ice. Garnish with cherry and orange slice.',
-    price: 12,
-  },
-  {
-    name: 'Daiquiri',
-    instructions:
-      'Shake rum, lime juice, and simple syrup with ice. Strain into a chilled glass and garnish with lime wheel.',
-    price: 12,
-  },
-  {
-    name: 'Negroni',
-    instructions:
-      'Stir gin, Campari, and sweet vermouth with ice. Strain into a glass filled with ice. Garnish with orange twist.',
-    price: 11,
-  },
-  {
-    name: 'Bloody Mary',
-    instructions:
-      'Mix vodka, tomato juice, lemon juice, hot sauce, Worcestershire sauce, and spices. Pour over ice and garnish with celery and lemon wedge.',
-    price: 9,
-  },
-  {
-    name: 'Aperol Spritz',
-    instructions:
-      'Combine Aperol, prosecco, and club soda in a glass filled with ice. Stir gently and garnish with orange slice.',
-    price: 9,
-  },
-  {
-    name: 'Tom Collins',
-    instructions:
-      'Shake gin, lemon juice, and simple syrup with ice. Strain into a glass filled with ice, top with club soda. Garnish with lemon wedge.',
-    price: 12,
   },
   {
     name: 'Gin and Tonic',
     instructions:
-      'Pour gin and tonic water over ice in a glass. Stir gently and garnish with lime wedge.',
-    price: 9,
-  },
-  {
-    name: 'Paloma',
-    instructions:
-      'Mix tequila, grapefruit juice, lime juice, and club soda in a glass filled with ice. Garnish with lime wheel.',
-    price: 11,
-  },
-  {
-    name: 'Sangria',
-    instructions:
-      'Mix red wine, brandy, orange juice, and chopped fruit in a pitcher. Chill and serve over ice with fruit garnish.',
+      'Pour 1.5 oz of Gin (Bombay) over ice in a highball glass. Top with tonic water and garnish with a lime or lemon slice.',
     price: 10,
   },
   {
-    name: 'Moscow Mule',
+    name: 'Rum and Coke',
     instructions:
-      'Pour vodka, lime juice, and ginger beer into a copper mug filled with ice. Stir and garnish with lime wedge.',
-    price: 11,
-  },
-  {
-    name: 'Irish Coffee',
-    instructions:
-      'Mix hot coffee with Irish whiskey and sugar. Top with whipped cream.',
-    price: 8,
-  },
-  {
-    name: "Pimm's Cup",
-    instructions:
-      "Mix Pimm's No.1, lemonade, and club soda over ice. Garnish with cucumber, mint, and citrus slices.",
-    price: 9,
-  },
-  {
-    name: 'Rum Punch',
-    instructions:
-      'Mix rum, orange juice, pineapple juice, grenadine, and lime juice in a shaker with ice. Serve over ice and garnish with fruit.',
-    price: 8,
-  },
-  {
-    name: 'Mint Julep',
-    instructions:
-      'Muddle mint leaves with sugar and water. Add bourbon and ice, stir until chilled. Garnish with mint sprig.',
-    price: 8,
-  },
-  {
-    name: 'Bellini',
-    instructions:
-      'Pour peach purée into a glass and top with prosecco. Stir gently and garnish with peach slice.',
-    price: 8,
-  },
-  {
-    name: 'Caipirinha',
-    instructions:
-      'Muddle lime and sugar in a glass. Add cachaça and ice, stir well.',
-    price: 9,
-  },
-  {
-    name: 'French 75',
-    instructions:
-      'Shake gin, lemon juice, and simple syrup with ice. Strain into a glass and top with champagne. Garnish with lemon twist.',
-    price: 11,
-  },
-  {
-    name: 'Hot Toddy',
-    instructions:
-      'Mix whiskey, honey, lemon juice, and hot water. Stir and garnish with lemon slice and cinnamon stick.',
-    price: 9000000,
+      'Pour 1.5 oz of Rum (Bacardi Blanco) over ice in a highball glass. Top with Coca-Cola and stir gently.',
+    price: 10,
   },
   {
     name: 'Tequila Sunrise',
     instructions:
-      'Pour tequila and orange juice into a glass filled with ice. Slowly add grenadine to create a sunrise effect. Garnish with cherry.',
+      'Pour 1.5 oz of Tequila (Jose Cuervo Silver) into a glass over ice. Add orange juice (if available) and a splash of grenadine for a layered effect.',
     price: 10,
   },
   {
-    name: 'Amaretto Sour',
+    name: 'Whiskey Ginger',
     instructions:
-      'Shake amaretto, lemon juice, and simple syrup with ice. Strain into a glass and garnish with cherry.',
+      "Pour 1.5 oz of Whiskey (Dewar's or Johnnie Walker Black) over ice in a highball glass. Top with ginger ale or soda water and stir gently.",
     price: 10,
   },
   {
-    name: 'White Russian',
+    name: 'Prosecco Spritz',
     instructions:
-      'Pour vodka, coffee liqueur, and cream over ice. Stir gently.',
+      'Pour 3 oz of Prosecco over ice in a wine glass. Add a splash of soda water and, if available, Aperol or Campari. Garnish with an orange slice.',
     price: 10,
   },
   {
-    name: "Dark 'n' Stormy",
+    name: 'Classic Mimosa',
     instructions:
-      'Pour dark rum and ginger beer over ice in a glass. Stir gently and garnish with lime wedge.',
-    price: 11,
+      'In a flute glass, combine equal parts Prosecco and orange juice (if available). Serve immediately.',
+    price: 10,
   },
   {
-    name: 'Michelada',
+    name: 'Whiskey Sour (simplified)',
     instructions:
-      'Mix beer, tomato juice, lime juice, hot sauce, and Worcestershire sauce in a glass filled with ice. Garnish with lime wedge.',
-    price: 9,
+      "Shake 1.5 oz of Whiskey (Wild Turkey or Dewar's) with lemon juice (if available) and a dash of sugar or simple syrup. Serve over ice.",
+    price: 10,
   },
   {
-    name: 'Shirley Temple',
+    name: 'Vodka Lemonade',
     instructions:
-      'Mix ginger ale and grenadine over ice. Garnish with a cherry.',
-    price: 7,
+      'Pour 1.5 oz of Vodka (42Below) over ice in a highball glass. Top with lemonade (if available) and stir gently.',
+    price: 10,
   },
   {
-    name: 'Arnold Palmer',
+    name: 'Red Wine Spritzer',
     instructions:
-      'Mix equal parts iced tea and lemonade over ice. Garnish with lemon slice.',
-    price: 5000000,
+      'In a wine glass, mix equal parts red wine and soda water. Add fresh lemon or lime juice if desired.',
+    price: 10,
   },
   {
-    name: 'Virgin Piña Colada',
+    name: 'White Wine Spritzer',
     instructions:
-      'Blend pineapple juice, coconut cream, and ice. Pour into a glass and garnish with pineapple slice and cherry.',
-    price: 8,
+      'In a wine glass, combine equal parts white wine and soda water. Garnish with a lemon or lime slice if desired.',
+    price: 10,
   },
   {
-    name: 'Coca-Cola',
-    instructions: 'Serve over ice with lemon or lime wedge.',
-    price: 5,
-  },
-  {
-    name: 'Lemonade',
+    name: 'Straight Whiskey',
     instructions:
-      'Mix lemon juice, sugar, and water over ice. Garnish with lemon slice.',
-    price: 5,
+      "Serve Wild Turkey, Dewar's, or Johnnie Walker Black neat or over ice in a glass.",
+    price: 10,
   },
   {
-    name: 'Iced Coffee',
+    name: 'Tequila Shots',
     instructions:
-      'Brew strong coffee, pour over ice, and add milk or sweetener to taste.',
-    price: 4.95,
+      'Serve Tequila (Jose Cuervo Silver) in a shot glass, with a lime wedge and salt on the side if desired.',
+    price: 10,
   },
   {
-    name: 'Green Tea',
+    name: 'Vodka on the Rocks',
     instructions:
-      'Steep green tea leaves in hot water. Serve with lemon or honey.',
-    price: 3.95,
+      'Pour 1.5 oz of Vodka (42Below) over ice in a rocks glass and serve.',
+    price: 10,
   },
   {
-    name: 'Chardonnay',
+    name: 'Gin on the Rocks',
+    instructions:
+      'Pour 1.5 oz of Gin (Bombay) over ice in a rocks glass. Garnish with a twist of lime or lemon if desired.',
+    price: 10,
+  },
+  {
+    name: 'Singha or Heineken Beer',
+    instructions: 'Serve chilled in a glass or bottle.',
+    price: 10,
+  },
+  {
+    name: 'Red Wine',
+    instructions:
+      'Serve at room temperature or slightly chilled in a wine glass.',
+    price: 10,
+  },
+  {
+    name: 'White Wine',
     instructions: 'Serve chilled in a wine glass.',
-    price: 12,
+    price: 10,
   },
   {
-    name: 'Cabernet Sauvignon',
-    instructions: 'Serve at room temperature in a wine glass.',
-    price: 11,
+    name: 'Prosecco',
+    instructions: 'Serve chilled in a flute.',
+    price: 10,
   },
   {
-    name: 'Pinot Noir',
-    instructions: 'Serve at room temperature in a wine glass.',
-    price: 12,
+    name: 'Classic Coke',
+    instructions:
+      'Serve chilled over ice with a lemon or lime wedge if desired.',
+    price: 10,
   },
   {
-    name: 'IPA Beer',
-    instructions: 'Serve chilled in a pint glass.',
-    price: 9,
+    name: 'Diet Coke',
+    instructions:
+      'Serve chilled over ice with a lemon or lime wedge if desired.',
+    price: 10,
   },
   {
-    name: 'Lager Beer',
-    instructions: 'Serve chilled in a pint glass.',
-    price: 8,
+    name: 'Sprite',
+    instructions:
+      'Serve chilled over ice with a lemon or lime wedge if desired.',
+    price: 10,
   },
   {
-    name: 'Stout Beer',
-    instructions: 'Serve chilled in a pint glass.',
-    price: 9,
+    name: 'Tonic Water',
+    instructions:
+      'Serve chilled over ice with a slice of lemon or lime if desired.',
+    price: 10,
+  },
+  {
+    name: 'Soda Water',
+    instructions:
+      'Serve chilled over ice with a slice of lemon or lime if desired.',
+    price: 10,
+  },
+  {
+    name: 'Acqua Panna',
+    instructions: 'Serve chilled as still mineral water.',
+    price: 10,
   },
 ]

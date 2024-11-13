@@ -26,12 +26,12 @@ export const CheckoutLink = async ({
       {status?.length && status?.length > 0 ? (
         <CheckoutStatus tip_status={status} />
       ) : (
-        <div class='tip-link' id='tip-link'>
+        <div class='tip-link flex flex-col items-center' id='tip-link'>
           <div class='mb-5 text-center font-bold text-base'>
             Thank you! Here's a link where you can send your USDC to the bar
             tender, via the Payman system.
           </div>
-          <div class='my-10 flex justify-center'>{qrCode}</div>
+          <div class='my-10 flex w-[60%] justify-center'>{qrCode}</div>
           <div class='flex justify-center'>
             <a
               href={url}
