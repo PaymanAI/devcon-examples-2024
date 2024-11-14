@@ -15,9 +15,9 @@ const Login = () => {
           style={{ height: 40, width: 180, marginBottom: 10 }}
         />
         <img src={DrillbitAvatar} style={{ height: 320, width: 320 }} />
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-4xl font-bold">Login to attend </span>
-          <span className="text-4xl  text-white  font-bold">
+        <div className="flex flex-col items-center text-center gap-2">
+          <span className="text-4xl font-bold text-center">Login to attend </span>
+          <span className="text-4xl  text-white  text-center font-bold">
             Drillbit’s Beach Bash
           </span>
         </div>

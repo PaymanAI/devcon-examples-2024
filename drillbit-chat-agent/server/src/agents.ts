@@ -195,7 +195,7 @@ export const fund_requester = async (
   const { checkoutUrl } = JSON.parse(response);
   return {
     extra: {
-      msg: `Click to pay ${paidDrink.price} ${paidDrink.currency} for Drillbit's ${paidDrink.name}`,
+      msg: `Click to pay ${paidDrink.price} ${paidDrink.currency} for Drillbit's ${paidDrink.name}. Once you pay, please give it a minute for the transaction to be verified.`,
       checkoutUrl: checkoutUrl,
     },
   };
